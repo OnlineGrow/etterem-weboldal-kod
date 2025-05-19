@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapcsolat - Arany Kanál Étterem</title> 
+    <meta name="description" content="Lépjen kapcsolatba az Arany Kanál Étteremmel. Címünk, térkép, nyitvatartás, telefonszám és online üzenetküldés. Tervezze meg nálunk privát rendezvényét!">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style_index.css"> 
+    <link rel="stylesheet" href="style_contact.css"> 
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body data-theme="light">
+
+    <header id="main-header">
+        <div class="container">
+            <a href="index.html" id="logo" class="logo"> 
+                Arany Kanál <span class="logo-accent">Étterem</span>
+            </a>
+            <nav id="main-nav">
+                <button id="mobile-menu-toggle" aria-label="Menü megjelenítése/elrejtése" aria-expanded="false" aria-controls="main-nav-ul">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="main-nav-ul"> 
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="index.html#about-section">Rólunk</a></li>
+                    <li><a href="menu.html">Étlap</a></li>
+                    <li><a href="index.html#daily-offer-section">Napi Ajánlat</a></li>
+                    <li><a href="contact.html" class="active">Kapcsolat</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                 <div id="real-time-wait-contact" class="real-time-wait-display">
+                    <i class="fas fa-clock"></i> Várható várakozás: <span id="wait-time-value-contact">betöltés...</span>
+                </div>
+                <button id="theme-toggle-button" aria-label="Sötét/Világos mód váltása"><i class="fas fa-moon"></i></button>
+                <div class="language-switcher">
+                    <button class="current-lang" aria-haspopup="true" aria-expanded="false">HU <i class="fas fa-caret-down"></i></button>
+                    <div class="lang-dropdown" role="menu">
+                        <a href="#" data-lang="hu" role="menuitem">Magyar</a>
+                        <a href="#" data-lang="en" role="menuitem">English</a>
+                    </div>
+                </div>
+                <a href="booking.html" class="button button-primary main-booking-button">Asztalfoglalás</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="contact-hero-section" class="page-hero-short" style="background-image: url('https://images.unsplash.com/photo-1554679665-f5537f187268?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=400&q=80');">
+            <div class="hero-background-image" style="background-image: url('https://images.unsplash.com/photo-1554679665-f5537f187268?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=400&q=80');"></div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1 class="hero-title-small">Elérhetőségeink</h1>
+                <p class="hero-slogan-small">Kérdése van, vagy különleges kéréssel fordulna hozzánk? Örömmel várjuk megkeresését!</p>
+            </div>
+        </section>
+
+        <section id="contact-details-section" class="section-padding">
+            <div class="container">
+                <div class="grid-2-col-contact">
+                    <div class="contact-info animate-on-scroll">
+                        <h2 class="subsection-title">Keressen Minket Bizalommal</h2>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt contact-icon" aria-hidden="true"></i>
+                            <div>
+                                <strong>Címünk:</strong>
+                                <p>1051 Budapest, Zrínyi utca 5.</p>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Budapest%2C%20Zr%C3%ADnyi%20utca%205" target="_blank" rel="noopener" class="map-link button button-outline-primary button-small">
+                                    <i class="fas fa-directions"></i> Útvonaltervezés
+                                </a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                             <i class="fas fa-phone contact-icon" aria-hidden="true"></i>
+                             <div>
+                                 <strong>Asztalfoglalás & Információ:</strong>
+                                 <p><a href="tel:+3612345678">+36 1 234 5678</a></p>
+                             </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope contact-icon" aria-hidden="true"></i>
+                            <div>
+                                <strong>Általános megkeresések:</strong>
+                                <p><a href="mailto:info@aranykanaletterem.hu">info@aranykanaletterem.hu</a></p>
+                                <strong>Asztalfoglalás e-mailben (alternatív):</strong>
+                                <p><a href="mailto:foglalas@aranykanaletterem.hu">foglalas@aranykanaletterem.hu</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-clock contact-icon" aria-hidden="true"></i>
+                            <div>
+                                <strong>Nyitvatartás:</strong>
+                                <p>Hétfő - Szombat: 12:00 - 23:00</p>
+                                <p>Vasárnap: 12:00 - 22:00</p>
+                            </div>
+                        </div>
+                         <div class="social-icons-contact" style="margin-top: 30px;">
+                            <strong>Kövessen minket:</strong>
+                            <a href="#" aria-label="Facebook oldalunk (új ablakban nyílik)" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram profilunk (új ablakban nyílik)" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="TripAdvisor értékeléseink (új ablakban nyílik)" target="_blank" rel="noopener"><i class="fab fa-tripadvisor"></i></a>
+                         </div>
+                    </div>
+
+                    <div class="contact-form-container animate-on-scroll" data-animation-delay="0.1s">
+                        <h2 class="subsection-title">Írjon Nekünk Üzenetet</h2>
+                        <p class="form-intro-text">Kérjük, töltse ki az alábbi űrlapot, és munkatársunk hamarosan válaszol Önnek. Asztalfoglaláshoz használja <a href="booking.html" class="text-gold">online rendszerünket</a>.</p>
+                        <form id="mainContactForm" novalidate> 
+                            <div class="form-group">
+                                <label for="contact-name">Név <span class="required-star">*</span></label>
+                                <input type="text" id="contact-name" name="name" required placeholder="Az Ön neve" aria-describedby="contactNameError">
+                                <small class="form-error-message" id="contactNameError"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">E-mail <span class="required-star">*</span></label>
+                                <input type="email" id="contact-email" name="email" required placeholder="E-mail címe" aria-describedby="contactEmailError">
+                                 <small class="form-error-message" id="contactEmailError"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject">Tárgy (opcionális)</label>
+                                <input type="text" id="contact-subject" name="subject" placeholder="Üzenetének tárgya">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">Üzenet <span class="required-star">*</span></label>
+                                <textarea id="contact-message" name="message" rows="5" required placeholder="Ide írja üzenetét..." aria-describedby="contactMessageError"></textarea>
+                                <small class="form-error-message" id="contactMessageError"></small>
+                            </div>
+                            <button type="submit" class="button button-gold button-large">
+                                <i class="fas fa-paper-plane"></i> Üzenet Elküldése
+                            </button>
+                            <div id="contactFormStatus" class="form-status" aria-live="polite"></div> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="private-events-section" class="section-padding bg-light-alt">
+            <div class="container text-center animate-on-scroll">
+                 <h2 class="section-title"><i class="fas fa-glass-cheers text-gold" style="margin-right:10px;"></i>Tervezze meg Nálunk Privát Rendezvényét!</h2>
+                 <p class="subtitle" style="margin-bottom: 20px;">Legyen szó születésnapról, évfordulóról, exkluzív céges vacsoráról vagy bármilyen különleges összejövetelről, éttermünk ideális helyszínt és prémium szolgáltatásokat biztosít.</p>
+                 <div class="event-features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 30px; text-align: left;">
+                    <div class="event-feature-item" style="padding:15px; background-color:#fff; border-radius:var(--border-radius-main); box-shadow:var(--box-shadow-light);">
+                        <h4 style="color:var(--ak-primary-blue); margin-bottom:8px;"><i class="fas fa-utensils"></i> Személyre Szabott Menü</h4>
+                        <p style="font-size:0.9em; color:var(--ak-text-muted);">Séfünkkel közösen alkothatják meg a tökéletes menüsort, figyelembe véve egyedi igényeiket és vendégeik ízlését.</p>
+                    </div>
+                    <div class="event-feature-item" style="padding:15px; background-color:#fff; border-radius:var(--border-radius-main); box-shadow:var(--box-shadow-light);">
+                        <h4 style="color:var(--ak-primary-blue); margin-bottom:8px;"><i class="fas fa-users-cog"></i> Profi Szervezés</h4>
+                        <p style="font-size:0.9em; color:var(--ak-text-muted);">Tapasztalt rendezvényszervező csapatunk minden részletre kiterjedő figyelmet fordít, a tervezéstől a megvalósításig.</p>
+                    </div>
+                    <div class="event-feature-item" style="padding:15px; background-color:#fff; border-radius:var(--border-radius-main); box-shadow:var(--box-shadow-light);">
+                        <h4 style="color:var(--ak-primary-blue); margin-bottom:8px;"><i class="fas fa-gifts"></i> Különleges Hangulat</h4>
+                        <p style="font-size:0.9em; color:var(--ak-text-muted);">Elegáns különtermünk vagy akár az egész étterem rendelkezésükre áll, hogy rendezvényük valóban felejthetetlen legyen.</p>
+                    </div>
+                 </div>
+                 <a href="events.html" class="button button-primary button-large">
+                     <i class="fas fa-calendar-alt"></i> Rendezvénytervezés és Ajánlatkérés
+                 </a>
+                 <p style="margin-top:15px; font-size:0.9em; color:var(--ak-text-muted);">Az `events.html` oldalunkon részletesebb információkat talál, és egyedi ajánlatot kérhet.</p>
+            </div>
+        </section>
+
+        <section id="map-section" class="animate-on-scroll" style="padding-bottom: 0;"> 
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2695.880011879747!2d19.0477068156269!3d47.49916197917784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc41f5a7a60b%3A0x70a81f776f9b4b5c!2sBudapest%2C%20Zr%C3%ADnyi%20u.%205%2C%201051!5e0!3m2!1shu!2shu!4v1620000000000!5m2!1shu!2shu" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Arany Kanál Étterem elhelyezkedése Budapesten"
+                aria-label="Google térkép az étterem címével: Budapest, Zrínyi utca 5.">
+            </iframe>
+        </section>
+
+    </main>
+
+    <footer id="main-footer">
+        <div class="container">
+             <div class="footer-grid">
+                 <div class="footer-column about-column"> 
+                    <h4>Az Arany Kanál Étteremről</h4> 
+                     <p>Prémium ízek, felejthetetlen pillanatok Budapest szívében.</p>
+                     <div class="social-icons-footer">
+                        <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TripAdvisor" target="_blank" rel="noopener"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                 </div>
+                 <div class="footer-column links-column"> 
+                    <h4>Hasznos Oldalak</h4> 
+                    <ul>
+                        <li><a href="index.html">Főoldal</a></li>
+                        <li><a href="index.html#about-section">Rólunk</a></li>
+                        <li><a href="menu.html">Étlap</a></li>
+                        <li><a href="index.html#daily-offer-section">Napi Ajánlat</a></li>
+                        <li><a href="contact.html">Kapcsolat</a></li>
+                        <li><a href="booking.html">Asztalfoglalás</a></li>
+                        <li><a href="events.html">Rendezvények</a></li>
+                        <li><a href="index.html#loyalty-program-intro">Hűségprogram</a></li>
+                    </ul>
+                </div>
+                 <div class="footer-column contact-column"> 
+                    <h4>Elérhetőségek</h4> 
+                     <p><i class="fas fa-map-marker-alt"></i> 1051 Budapest, Zrínyi utca 5.</p> 
+                     <p><i class="fas fa-phone"></i> <a href="tel:+3612345678">+36 1 234 5678</a></p>
+                     <p><i class="fas fa-envelope"></i> <a href="mailto:foglalas@aranykanaletterem.hu">foglalas@aranykanaletterem.hu</a></p>
+                 </div>
+                <div class="footer-column newsletter-column"> 
+                    <h4>Maradjon Képben!</h4> 
+                     <form id="newsletterFormFooter">  
+                        <input type="email" id="newsletterEmailFooter" name="email" placeholder="E-mail címe" required>
+                        <button type="submit" class="button button-gold button-small">Feliratkozás</button> 
+                    </form>
+                    <small id="newsletterStatusFooter" aria-live="polite"></small>
+                </div>
+             </div>
+             <div class="footer-bottom">
+                 <p>© <span id="currentYear"></span> Arany Kanál Étterem. Minden jog fenntartva. | <a href="#">Adatkezelési Tájékoztató</a></p>
+             </div>
+         </div>
+    </footer>
+    
+    <script src="script_contact.js"></script> 
+</body>
+</html>

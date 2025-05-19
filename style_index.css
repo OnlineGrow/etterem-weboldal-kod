@@ -1,0 +1,922 @@
+/* === ALAPOK ÉS VÁLTOZÓK (KÖZPONTI) === */
+:root {
+    --ak-dark-bg: #1A2E3F; /* Sötét tengerészkék */
+    --ak-content-bg: #FFFFFF;
+    --ak-light-bg-alt: #F4F8FA; /* Enyhén módosított világos háttér */
+    --ak-primary-blue: #007BFF; /* Élénk kék */
+    --ak-accent-gold: #FFA000; /* Kicsit mélyebb arany/narancs */
+    --ak-text-light: #F8F9FA; /* Világos szöveg (általában sötét háttéren) */
+    --ak-text-dark: #343a40; /* Sötét szöveg (általában világos háttéren) */
+    --ak-text-muted: #6C757D;
+    --ak-success: #28a745;
+    --ak-error: #dc3545;
+    --ak-border-color: #dee2e6; /* Egységes keretszín */
+
+    /* Frissített, egységesített fontok */
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Open Sans', sans-serif;
+
+    --header-height: 70px;
+    --transition-main: 0.3s ease;
+    --box-shadow-light: 0 3px 8px rgba(0, 0, 0, 0.07);
+    --box-shadow-dark: 0 6px 15px rgba(0, 0, 0, 0.1);
+    --border-radius-main: 6px;
+}
+
+/* Sötét téma változók - JAVÍTVA */
+body[data-theme="dark"] {
+    --ak-dark-bg: #111827;         /* Nagyon sötét háttér (pl. header/footer) */
+    --ak-content-bg: #1F2937;      /* Fő tartalom háttérszíne sötét módban */
+    --ak-light-bg-alt: #2c3e50;   /* Alternatív, kicsit világosabb sötét háttér (pl. kártyákhoz) */
+    --ak-primary-blue: #38BDF8;    /* Élénkebb kék sötét témához */
+    --ak-accent-gold: #FBBF24;     /* Élénkebb arany sötét témához */
+    --ak-text-light: #E5E7EB;      /* Világos szöveg (pl. header/footer szövege sötét témában) */
+    --ak-text-dark: #F0F0F0;       /* Fő szövegszín sötét témában (tartalmi szöveg) */
+    --ak-text-muted: #9CA3AF;      /* Halványabb világos szöveg sötét témában */
+    --ak-border-color: #4B5563;    /* Sötétebb keretszín */
+}
+
+
+/* === GLOBÁLIS STÍLUSOK (KÖZPONTI) === */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+}
+
+body {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ak-text-dark);
+    background-color: var(--ak-content-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.container {
+    width: 92%;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--ak-primary-blue);
+    transition: color var(--transition-main);
+}
+a:hover, a:focus {
+    color: var(--ak-accent-gold);
+    outline: none;
+}
+/* Akadálymentes focus stílus */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, [tabindex="0"]:focus-visible {
+    outline: 2px solid var(--ak-primary-blue) !important;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    border-radius: 3px;
+}
+button:focus:not(:focus-visible) {
+     outline: none;
+}
+
+
+img, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: middle;
+}
+img.rounded-image { border-radius: var(--border-radius-main); }
+img.shadow-image { box-shadow: var(--box-shadow-dark); }
+img.image-styled {
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--box-shadow-light);
+    border: 1px solid var(--ak-border-color);
+}
+
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-gold { color: var(--ak-accent-gold) !important; }
+.text-light { color: var(--ak-text-light) !important; }
+.text-muted { color: var(--ak-text-muted) !important; }
+
+.required-star { color: var(--ak-error); margin-left: 2px; font-weight: normal; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+
+/* === SZEKCIÓ ÁLTALÁNOS STÍLUSOK === */
+.section-padding { padding: clamp(50px, 8vw, 80px) 0; }
+.section-padding-small { padding: clamp(30px, 5vw, 40px) 0; }
+
+.section-title {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    font-weight: 700;
+    color: var(--ak-dark-bg);
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+.section-title.text-center { margin-bottom: clamp(35px, 6vw, 50px); }
+/* Sötét témában a .section-title-nak is világosabbnak kell lennie, ha az --ak-dark-bg változó világosabb lesz */
+body[data-theme="dark"] .section-title {
+    color: var(--ak-text-dark); /* Hogy kontrasztos legyen a sötét háttérrel */
+}
+.section-title.text-light { color: var(--ak-text-light); } /* Ez felülírja a body[data-theme="dark"] .section-title-t, ha szükséges */
+
+
+.section-title i { margin-right: 10px; font-size: 0.8em; vertical-align: middle; }
+
+.subsection-title {
+    font-family: var(--font-primary);
+    font-size: clamp(1.5rem, 4vw, 1.9rem);
+    font-weight: 600;
+    color: var(--ak-dark-bg);
+    margin-bottom: 30px;
+}
+body[data-theme="dark"] .subsection-title {
+    color: var(--ak-text-dark);
+}
+.subsection-title.text-center { margin-bottom: 40px; }
+
+.subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    color: var(--ak-text-muted);
+    margin-bottom: clamp(30px, 6vw, 50px);
+    max-width: 800px;
+    line-height: 1.8;
+}
+.subtitle.text-center { margin-left: auto; margin-right: auto; }
+.subtitle.text-light { color: #d1d5db; } /* Ezt a sötét téma --ak-text-muted felülírhatja, ha az erősebb */
+body[data-theme="dark"] .subtitle.text-light {
+    color: var(--ak-text-muted); /* Biztosítjuk, hogy a text-light is megfelelően világos legyen sötét témában */
+}
+
+
+.bg-light-alt { background-color: var(--ak-light-bg-alt); }
+.bg-dark { background-color: var(--ak-dark-bg); color: var(--ak-text-light); }
+/* Biztosítjuk, hogy a .bg-dark szekciókban a címek is a --ak-text-light színt használják */
+.bg-dark .section-title,
+.bg-dark .subsection-title {
+    color: var(--ak-text-light);
+}
+.bg-dark .subtitle {
+    color: var(--ak-text-muted); /* Vagy egy világosabb muted szín, ha van külön definiálva sötét témához */
+}
+body[data-theme="dark"] .bg-dark .subtitle {
+     color: var(--ak-text-muted); /* Explicit beállítás sötét témára, ha a .bg-dark-ot felülírná valami */
+}
+
+
+/* === GOMBOK (KÖZPONTI) === */
+.button {
+    display: inline-block;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 2px solid transparent;
+    padding: 12px 30px;
+    font-size: 0.95rem;
+    border-radius: var(--border-radius-main);
+    transition: all var(--transition-main);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    line-height: 1.5;
+    box-shadow: var(--box-shadow-light);
+}
+.button:hover {
+     transform: translateY(-2px);
+     box-shadow: var(--box-shadow-dark);
+}
+.button i { margin-right: 8px; vertical-align: middle; }
+
+.button-primary { background-color: var(--ak-primary-blue); color: #fff; border-color: var(--ak-primary-blue); }
+.button-primary:hover { background-color: #0069d9; border-color: #0062cc; color: #fff; }
+body[data-theme="dark"] .button-primary {
+    background-color: var(--ak-primary-blue);
+    color: var(--ak-dark-bg); /* Sötét szöveg világosabb kék gombon */
+    border-color: var(--ak-primary-blue);
+}
+body[data-theme="dark"] .button-primary:hover {
+    background-color: #2793dd; /* Kicsit sötétebb a hoverhez */
+    border-color: #2793dd;
+}
+
+
+.button-secondary { background-color: transparent; color: var(--ak-text-dark); border-color: var(--ak-border-color); }
+.button-secondary:hover { background-color: var(--ak-light-bg-alt); color: var(--ak-text-dark); border-color: #adb5bd; }
+.bg-dark .button-secondary { color: var(--ak-text-light); border-color: rgba(255, 255, 255, 0.5); }
+.bg-dark .button-secondary:hover { background-color: rgba(255, 255, 255, 0.1); color: var(--ak-text-light); border-color: rgba(255, 255, 255, 0.8); }
+body[data-theme="dark"] .button-secondary {
+    color: var(--ak-text-dark);
+    border-color: var(--ak-border-color);
+}
+body[data-theme="dark"] .button-secondary:hover {
+    background-color: var(--ak-light-bg-alt); /* A sötét téma light-bg-alt-ját használja */
+    border-color: var(--ak-primary-blue); /* Kiemelés hoverre */
+}
+
+
+.button-gold { background-color: var(--ak-accent-gold); color: var(--ak-dark-bg); border-color: var(--ak-accent-gold); }
+.button-gold:hover { background-color: #e69500; border-color: #e69500; color: var(--ak-dark-bg); }
+body[data-theme="dark"] .button-gold {
+    background-color: var(--ak-accent-gold);
+    color: #1F2937; /* Sötétebb szöveg a sötét téma arany gombján */
+    border-color: var(--ak-accent-gold);
+}
+body[data-theme="dark"] .button-gold:hover {
+    background-color: #d9a400; /* Kicsit sötétebb arany hoverre */
+    border-color: #d9a400;
+}
+
+.button-outline-primary { background-color: transparent; color: var(--ak-primary-blue); border-color: var(--ak-primary-blue); }
+.button-outline-primary:hover { background-color: var(--ak-primary-blue); color: #fff; }
+body[data-theme="dark"] .button-outline-primary:hover {
+    background-color: var(--ak-primary-blue);
+    color: var(--ak-dark-bg); /* Sötét szöveg a kitöltött gombon */
+}
+
+
+.button-outline-light { background-color: transparent; color: var(--ak-text-light); border-color: var(--ak-text-light); }
+.button-outline-light:hover { background-color: var(--ak-text-light); color: var(--ak-dark-bg); }
+/* .bg-dark .button-outline-light már jól kezeli a text-light-ot */
+
+
+.button-small { padding: 8px 18px; font-size: 0.85rem; letter-spacing: 0.5px;}
+.button-large { padding: 15px 35px; font-size: 1.05rem; }
+
+.button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+
+/* === FEJLÉC (KÖZPONTI) === */
+#main-header {
+    background-color: rgba(26, 46, 63, 0.9); /* Világos téma alapértelmezett */
+    backdrop-filter: blur(8px);
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color var(--transition-main), padding var(--transition-main), top var(--transition-main), box-shadow var(--transition-main);
+}
+#main-header.header-scrolled {
+    background-color: var(--ak-dark-bg); /* Világos témában a sötétkék, sötét témában a sötét téma --ak-dark-bg változója */
+    padding: 8px 0;
+    box-shadow: var(--box-shadow-dark);
+}
+/* Sötét téma specifikus header háttér (ha nem .header-scrolled) */
+body[data-theme="dark"] #main-header {
+    background-color: rgba(17, 24, 39, 0.9); /* Sötét téma header alapértelmezett (pl. --ak-dark-bg enyhe átlátszósággal) */
+}
+
+
+#main-header .container { display: flex; justify-content: space-between; align-items: center; }
+
+.logo {
+    font-family: var(--font-primary);
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    font-weight: 700;
+    color: var(--ak-text-light); /* Mindkét témában világos a sötét headeren */
+    text-decoration: none;
+    white-space: nowrap;
+    margin-right: auto;
+}
+.logo .logo-accent { color: var(--ak-accent-gold); } /* Mindkét témában az aktuális arany */
+
+#main-nav {
+     margin-right: auto;
+}
+#main-nav ul { list-style: none; display: flex; align-items: center; margin: 0; padding: 0;}
+#main-nav li { margin-left: clamp(10px, 2vw, 20px); }
+#main-nav a {
+    color: rgba(248, 249, 250, 0.85); /* Világosabb alap nav link szín (--ak-text-light enyhe átlátszósággal) */
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: 4px;
+    position: relative;
+    transition: color var(--transition-main), background-color var(--transition-main);
+    white-space: nowrap;
+}
+body[data-theme="dark"] #main-nav a {
+    color: rgba(229, 231, 235, 0.85); /* Sötét téma nav link színe */
+}
+
+#main-nav a::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -2px; left: 50%;
+    background-color: var(--ak-accent-gold);
+    transition: width 0.2s ease-out;
+    transform: translateX(-50%);
+}
+#main-nav a:hover::after,
+#main-nav a.active::after {
+    width: 50%;
+}
+#main-nav a:hover,
+#main-nav a.active {
+    color: var(--ak-text-light); /* Teljesen fehér hoverre/aktívra */
+    background-color: rgba(255,255,255,0.05); /* Univerzális, enyhe kiemelés */
+}
+body[data-theme="dark"] #main-nav a:hover,
+body[data-theme="dark"] #main-nav a.active {
+    color: var(--ak-text-light); /* Sötét témában is a legvilágosabb szöveg */
+    background-color: rgba(229, 231, 235, 0.1); /* Sötét témában enyhe kiemelés */
+}
+
+#main-nav a.nav-booking-button {
+    background-color: var(--ak-accent-gold);
+    color: var(--ak-dark-bg); /* Világos témában a sötétkék szöveg az arany gombon */
+    border-color: var(--ak-accent-gold); font-weight: 600;
+    padding: 8px 15px; box-shadow: none;
+}
+#main-nav a.nav-booking-button:hover {
+    background-color: #e69500; border-color: #e69500;
+    color: var(--ak-dark-bg); transform: none;
+}
+body[data-theme="dark"] #main-nav a.nav-booking-button {
+    color: #1F2937; /* Sötét szöveg a sötét téma arany gombján */
+}
+body[data-theme="dark"] #main-nav a.nav-booking-button:hover {
+    color: #1F2937;
+}
+
+
+/* Fejléc jobb oldali akciók */
+.header-actions {
+    display: flex; align-items: center;
+}
+.header-actions > *:not(:last-child) {
+     margin-right: clamp(10px, 2vw, 15px);
+}
+.header-actions .button.main-booking-button {
+     padding: 10px 20px; font-size: 0.9rem;
+     background-color: var(--ak-accent-gold);
+     color: var(--ak-dark-bg); /* Világos téma sötétkékje */
+     border-color: var(--ak-accent-gold);
+}
+.header-actions .button.main-booking-button:hover{
+    background-color: #e69500; border-color: #e69500;
+}
+body[data-theme="dark"] .header-actions .button.main-booking-button {
+    color: #1F2937; /* Sötét téma sötét szövege */
+}
+
+
+/* Valós idejű várakozási idő kijelző */
+.real-time-wait-display {
+    color: var(--ak-text-light); font-size: 0.85em;
+    background-color: rgba(255, 255, 255, 0.1); /* Univerzális */
+    padding: 5px 10px; border-radius: 4px;
+    white-space: nowrap;
+}
+.real-time-wait-display i { color: var(--ak-accent-gold); margin-right: 5px;}
+
+/* Téma váltó gomb */
+#theme-toggle-button {
+    background: none; border: none; color: var(--ak-text-light); /* Univerzális világos ikon */
+    font-size: 1.2rem; cursor: pointer; padding: 5px;
+    line-height: 1; transition: color var(--transition-main);
+}
+#theme-toggle-button:hover { color: var(--ak-accent-gold); }
+
+/* Nyelvválasztó */
+.language-switcher { position: relative; }
+.current-lang {
+    background: none; border: none; color: var(--ak-text-light); /* Univerzális világos */
+    font-family: var(--font-primary); font-weight: 500;
+    cursor: pointer; padding: 5px; display: flex; align-items: center;
+}
+.current-lang i { margin-left: 5px; transition: transform var(--transition-main);}
+.language-switcher:hover .current-lang i { transform: rotate(180deg); }
+
+.lang-dropdown {
+    display: none; position: absolute; top: 100%; right: 0;
+    background-color: var(--ak-content-bg); /* Ez a változó vált a témával */
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--box-shadow-dark);
+    padding: 8px 0; min-width: 120px;
+    z-index: 1001; border: 1px solid var(--ak-border-color); /* Ez a változó vált a témával */
+}
+.language-switcher:hover .lang-dropdown,
+.language-switcher .current-lang:focus + .lang-dropdown,
+.language-switcher .lang-dropdown:focus-within {
+    display: block;
+}
+.lang-dropdown a {
+    display: block; padding: 10px 18px; color: var(--ak-text-dark); /* Ez a változó vált a témával */
+    font-size: 0.9rem; white-space: nowrap;
+}
+.lang-dropdown a:hover, .lang-dropdown a:focus {
+    background-color: var(--ak-light-bg-alt); color: var(--ak-primary-blue); /* Ezek a változók váltanak */
+}
+
+/* Mobil menü kapcsoló */
+#mobile-menu-toggle {
+    display: none; background: none; border: none;
+    color: var(--ak-text-light); font-size: 1.8rem; /* Univerzális világos */
+    cursor: pointer; padding: 5px;
+    margin-left: 15px;
+}
+
+
+/* === FŐOLDAL HERO SZEKCIÓ (index.html) === */
+#hero-section {
+    position: relative; height: 95vh; min-height: 600px;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; color: var(--ak-text-light); /* Hero szöveg mindig világos */
+    overflow: hidden;
+}
+/* ...további hero stílusok változatlanok maradnak, mivel a benne lévő text-light már kezeli a színt... */
+.hero-background-slider .hero-slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center center;
+    z-index: 1; opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    filter: brightness(0.7);
+}
+.hero-background-slider .hero-slide.active { opacity: 1; }
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(26, 46, 63, 0.3), rgba(26, 46, 63, 0.6)); /* Világos téma overlay */
+    z-index: 2;
+}
+body[data-theme="dark"] .hero-overlay {
+    background: linear-gradient(rgba(17, 24, 39, 0.4), rgba(17, 24, 39, 0.7)); /* Sötét téma overlay */
+}
+.hero-content { position: relative; z-index: 3; padding-top: var(--header-height, 70px); }
+.hero-title {
+    font-family: var(--font-primary);
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    font-weight: 700; margin-bottom: 25px;
+    line-height: 1.25;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+}
+.hero-slogan {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    margin-bottom: 40px; max-width: 750px;
+    margin-left: auto; margin-right: auto;
+    font-weight: 400; opacity: 0.95;
+}
+.hero-booking-button { margin-top: 10px; }
+
+
+/* === FŐOLDAL SZEKCIÓK STÍLUSAI (index.html) === */
+
+/* Rólunk szekció */
+.grid-2-col-uneven { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;}
+@media (min-width: 992px) {
+    .grid-2-col-uneven { grid-template-columns: 1.2fr 1fr; gap: 60px; }
+    .grid-2-col-uneven .about-image-content { order: 2; }
+}
+.about-text-content p { margin-bottom: 20px; font-size: 1rem; color: var(--ak-text-muted); }
+.about-text-content .button { margin-top: 20px; }
+.about-image-content img {
+     box-shadow: var(--box-shadow-dark);
+     border: 5px solid var(--ak-content-bg); /* A border színe is változik a témával! */
+}
+
+/* Hangulat galéria */
+.ambiance-gallery .grid-3-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+.ambiance-gallery img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ambiance-gallery img:hover {
+    transform: scale(1.03);
+    box-shadow: var(--box-shadow-dark);
+}
+
+/* Napi ajánlat szekció (index.html) */
+.daily-offer-wrapper {
+    display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center;
+    background-color: var(--ak-content-bg); /* Témától függő háttér */
+    padding: clamp(25px, 4vw, 40px);
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--box-shadow-light);
+    border: 1px solid var(--ak-border-color); /* Témától függő keret */
+}
+@media (min-width: 768px) { .daily-offer-wrapper { grid-template-columns: 1fr 1.5fr; gap: 40px; } }
+.daily-offer-content h3 {
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    margin-bottom: 15px;
+    color: var(--ak-primary-blue); /* Témától függő */
+    font-family: var(--font-primary);
+    font-weight: 600;
+}
+.daily-offer-content p { margin-bottom: 20px; color: var(--ak-text-muted); } /* Témától függő */
+.chef-message {
+    margin-top: 25px; padding: 15px;
+    border-left: 4px solid var(--ak-accent-gold); /* Témától függő */
+    background-color: var(--ak-light-bg-alt); /* Témától függő */
+    border-radius: 0 var(--border-radius-main) var(--border-radius-main) 0;
+}
+.chef-message h4 { font-size: 1rem; color: var(--ak-dark-bg); margin-bottom: 8px; font-weight: 600; } /* Fő cím színe, témától függ */
+body[data-theme="dark"] .chef-message h4 { color: var(--ak-text-dark); } /* Sötét témában a szöveg világos */
+.chef-message h4 i { color: var(--ak-accent-gold); margin-right: 8px; }
+.chef-message blockquote {
+    font-style: italic; color: var(--ak-text-muted); /* Témától függő */
+    margin: 0; padding: 0; border: none;
+    font-size: 0.95rem; line-height: 1.6;
+}
+.daily-offer-content .button { margin-top: 25px; }
+
+/* További ajánlatok (index.html) */
+#offers-section {
+    position: relative;
+    overflow: hidden;
+    /* A .bg-dark osztály kezeli a hátteret és az alap szövegszínt */
+}
+#offers-section .container { position: relative; z-index: 1; }
+
+.offers-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.offer-card {
+    background-color: rgba(255, 255, 255, 0.05); /* Világos téma alapértelmezett a .bg-dark-on belül */
+    color: var(--ak-text-light); /* .bg-dark miatt már ez van */
+    border-radius: var(--border-radius-main);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform var(--transition-main), box-shadow var(--transition-main), border-color var(--transition-main);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Világos téma alapértelmezett */
+}
+body[data-theme="dark"] .offer-card { /* Sötét témában az offer card háttere */
+    background-color: var(--ak-light-bg-alt); /* Sötét téma alternatív háttere */
+    border-color: var(--ak-border-color); /* Sötét téma keretszíne */
+}
+
+.offer-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border-color: var(--ak-accent-gold); /* Témától függő arany */
+}
+.offer-card-image { width: 100%; height: 220px; object-fit: cover; opacity: 0.9; }
+.offer-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+.offer-tag {
+    display: inline-block;
+    background-color: var(--ak-accent-gold); /* Témától függő arany */
+    color: #1F2937; /* Mindig sötét szöveg az arany tagen */
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    align-self: flex-start;
+}
+.offer-content h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--ak-text-light); font-weight: 600;} /* .bg-dark miatt ez már jó */
+.offer-content p { font-size: 0.95rem; color: #ccc; margin-bottom: 15px; flex-grow: 1; } /* .bg-dark miatt ez már jó */
+body[data-theme="dark"] .offer-content p {
+    color: var(--ak-text-muted); /* Sötét téma muted szövege */
+}
+.offer-price {
+    display: block; font-size: 1.1rem; font-weight: 700; color: var(--ak-accent-gold); margin-bottom: 20px; /* Témától függő arany */
+}
+.offer-price .original-price { text-decoration: line-through; color: #aaa; font-weight: 400; margin-left: 8px; font-size: 0.9em; }
+.offer-content .button { align-self: flex-start; margin-top: auto; } /* Gombok már témakezeltek */
+
+/* Étel Kóstoló (index.html) */
+#food-preview-section { background-color: var(--ak-content-bg); } /* Témától függő */
+.food-preview-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+     gap: 30px;
+}
+.food-item-card {
+    background-color: var(--ak-content-bg); /* Témától függő */
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--box-shadow-light);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 25px;
+    border: 1px solid var(--ak-border-color); /* Témától függő */
+    transition: transform var(--transition-main), box-shadow var(--transition-main);
+}
+.food-item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-dark);
+}
+.food-item-card img {
+    border-radius: var(--border-radius-main) var(--border-radius-main) 0 0;
+    margin-bottom: 15px; width: 100%; height: 230px; object-fit: cover;
+}
+.food-item-content { padding: 0 20px; }
+.food-item-content h4 {
+    font-family: var(--font-primary); font-size: 1.25rem;
+    margin-bottom: 8px; font-weight: 600; color: var(--ak-dark-bg); /* Témától függő */
+}
+body[data-theme="dark"] .food-item-content h4 { color: var(--ak-text-dark); }
+
+.food-item-content p {
+    font-size: 0.95rem; color: var(--ak-text-muted); /* Témától függő */
+    margin-bottom: 15px; line-height: 1.6;
+}
+.food-item-price { font-weight: 700; color: var(--ak-primary-blue); font-size: 1.1rem; } /* Témától függő */
+
+/* Hűségprogram Intro (index.html) */
+#loyalty-program-intro { text-align: center; } /* .bg-dark kezeli */
+#loyalty-program-intro .subtitle {
+    /* color: #d1d5db; */ /* .bg-dark .subtitle már kezeli */
+    margin-left: auto;
+    margin-right: auto;
+}
+#loyalty-program-intro .button { margin-top: 20px; }
+
+/* Inline Foglalási Form (index.html) */
+.booking-form-wrapper-inline {
+    max-width: 900px; margin: 0 auto;
+    padding: clamp(20px, 4vw, 30px);
+    background-color: var(--ak-content-bg); /* Témától függő */
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--box-shadow-light);
+    border: 1px solid var(--ak-border-color); /* Témától függő */
+}
+.form-grid-inline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    align-items: flex-end;
+}
+.form-grid-inline .form-group { margin-bottom: 0; }
+.form-grid-inline input[type="date"],
+.form-grid-inline input[type="time"],
+.form-grid-inline input[type="number"] {
+    width: 100%; padding: 12px 15px;
+    font-family: var(--font-secondary); font-size: 0.95rem;
+    border: 1px solid var(--ak-border-color); /* Témától függő */
+    background-color: var(--ak-content-bg); /* Témától függő */
+    color: var(--ak-text-dark); /* Témától függő */
+    border-radius: var(--border-radius-main);
+    min-height: 48px;
+}
+body[data-theme="dark"] .form-grid-inline input[type="date"],
+body[data-theme="dark"] .form-grid-inline input[type="time"],
+body[data-theme="dark"] .form-grid-inline input[type="number"] {
+    /* Speciális stílusok a date/time input sötét témában, ha szükséges (pl. a böngésző alapértelmezett ikonjaihoz) */
+    color-scheme: dark; /* Segíthet a böngészőnek a belső UI elemek (pl. dátumválasztó) sötétítésében */
+}
+
+.form-grid-inline .button {
+    width: 100%; padding: 12px 15px; font-size: 1rem;
+    height: 48px;
+    line-height: 1.5;
+}
+.booking-alternative-inline { font-size: 0.9rem; margin-top: 20px; color: var(--ak-text-muted); }
+.form-status-message-inline { margin-top: 15px; font-size: 0.9rem; min-height: 1.2em;}
+
+
+/* Fenntarthatóság Intro (index.html) */
+#sustainability-intro { text-align: center; }
+#sustainability-intro .subtitle {
+    margin-left: auto;
+    margin-right: auto;
+}
+#sustainability-intro .button { margin-top: 20px; }
+
+/* Instagram Feed (index.html) */
+/* Az Instagram szekció általában világos háttéren van, így a .bg-light-alt kezeli a hátterét */
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px; margin-top: 30px;
+}
+.instagram-grid img {
+    aspect-ratio: 1 / 1; width: 100%; object-fit: cover;
+    border-radius: var(--border-radius-main);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.instagram-grid img:hover {
+    opacity: 0.85;
+    transform: scale(1.03);
+}
+.social-handle {
+    color: var(--ak-primary-blue); font-weight: 600; /* Témától függő */
+    text-decoration: none; font-size: 1.1em;
+}
+.social-handle:hover { text-decoration: underline; color: var(--ak-accent-gold);} /* Témától függő */
+.social-handle i { margin-left: 5px; }
+
+
+/* === LÁBLÉC (KÖZPONTI) === */
+/* A .bg-dark osztály és a benne lévő .text-light, .text-muted már nagyrészt kezeli a sötét témát */
+#main-footer {
+    background-color: var(--ak-dark-bg); /* Témától függő */
+    color: #ccc; /* Alapértelmezett világos szöveg a sötét háttéren */
+    padding: clamp(40px, 7vw, 60px) 0 20px;
+    font-size: 0.95rem;
+    border-top: 4px solid var(--ak-accent-gold); /* Témától függő arany */
+}
+body[data-theme="dark"] #main-footer {
+    color: var(--ak-text-muted); /* Sötét téma halványabb szövege */
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(30px, 5vw, 40px);
+    margin-bottom: 40px;
+}
+.footer-column h4 {
+    font-family: var(--font-primary); font-size: 1.1rem;
+    color: var(--ak-text-light); margin-bottom: 20px; /* Mindig világos */
+    text-transform: uppercase; letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Univerzális */
+}
+body[data-theme="dark"] .footer-column h4 {
+    border-bottom-color: var(--ak-border-color); /* Sötét téma keretszíne */
+}
+
+.footer-column p, .footer-column li { margin-bottom: 12px; color: #bbb; line-height: 1.7;} /* Világosabb, mint a --ak-text-muted */
+body[data-theme="dark"] .footer-column p,
+body[data-theme="dark"] .footer-column li {
+    color: var(--ak-text-muted); /* Sötét téma halványabbja */
+}
+
+.footer-column a { color: #eee; } /* Nagyon világos */
+body[data-theme="dark"] .footer-column a {
+    color: var(--ak-text-dark); /* Sötét téma fő szövegszíne linkekhez */
+}
+.footer-column a:hover { color: var(--ak-accent-gold); } /* Témától függő arany */
+
+
+.footer-column i.fa-map-marker-alt, .footer-column i.fa-phone, .footer-column i.fa-envelope {
+     margin-right: 10px; color: var(--ak-accent-gold); /* Témától függő arany */
+     width: 20px; text-align: center; font-size: 1.1em;
+}
+
+.social-icons-footer a {
+    display: inline-block; color: #bbb; /* Világosabb */
+    font-size: 1.4rem; margin-right: 18px;
+    transition: transform var(--transition-main), color var(--transition-main);
+}
+body[data-theme="dark"] .social-icons-footer a {
+    color: var(--ak-text-muted);
+}
+.social-icons-footer a:hover { transform: translateY(-3px); color: var(--ak-text-light); } /* Mindig a legvilágosabb */
+
+#newsletterFormFooter { display: flex; margin-top: 15px; }
+#newsletterFormFooter input[type="email"] {
+    flex-grow: 1; padding: 10px 15px;
+    border: 1px solid var(--ak-border-color); border-right: none; /* Témától függő keret */
+    border-radius: var(--border-radius-main) 0 0 var(--border-radius-main);
+    background-color: var(--ak-content-bg); color: var(--ak-text-dark); /* Témától függő */
+    font-family: var(--font-secondary); outline: none; font-size: 0.9rem;
+}
+#newsletterFormFooter .button {
+    border-radius: 0 var(--border-radius-main) var(--border-radius-main) 0;
+    padding: 10px 15px; box-shadow: none;
+    border: 1px solid var(--ak-accent-gold); border-left: none; /* Témától függő arany */
+}
+#newsletterStatusFooter {
+    font-size: 0.85rem; display: block; margin-top: 10px;
+    min-height: 1em; color: #aaa; /* Világosabb */
+}
+body[data-theme="dark"] #newsletterStatusFooter {
+    color: var(--ak-text-muted);
+}
+
+
+.footer-bottom {
+    text-align: center; padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1); /* Univerzális */
+    font-size: 0.9rem; color: #aaa; /* Világosabb */
+}
+body[data-theme="dark"] .footer-bottom {
+    border-top-color: var(--ak-border-color);
+    color: var(--ak-text-muted);
+}
+.footer-bottom p { margin: 0; }
+.footer-bottom a { color: #ccc; } /* Világosabb */
+body[data-theme="dark"] .footer-bottom a {
+    color: var(--ak-text-dark);
+}
+.footer-bottom a:hover { color: var(--ak-text-light); } /* Mindig a legvilágosabb */
+
+
+/* === ALAP ANIMÁCIÓK ÉS KEYFRAMES (KÖZPONTI) === */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    transition-delay: var(--delay, 0s);
+}
+
+@keyframes fadeInUpContentAnimation {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === RESZPONZÍV STÍLUSOK (KÖZPONTI) === */
+/* ... a reszponzív stílusok nagyrészt változatlanok maradnak, a CSS változók miatt automatikusan alkalmazkodnak ... */
+@media (max-width: 992px) {
+    #main-nav li { margin-left: 15px; }
+    #main-nav a { padding: 8px 10px; font-size: 0.85rem; }
+    .header-actions { margin-left: 15px; }
+    .header-actions > *:not(:last-child) { margin-right: 10px; }
+    .grid-2-col-uneven { grid-template-columns: 1fr; }
+    .about-image-content { order: -1; margin-bottom: 30px; }
+    .about-text-content { order: 0; }
+}
+
+@media (max-width: 768px) {
+    :root { --header-height: 65px; }
+    body { font-size: 15px; line-height: 1.65; }
+
+    /* Mobil Header / Nav */
+    #main-header { padding: 8px 0; }
+    #main-header.header-scrolled { padding: 8px 0; }
+    #main-nav {
+        order: 3;
+        width: 100%;
+    }
+    #main-nav ul#main-nav-ul {
+        display: none; flex-direction: column;
+        position: absolute; top: var(--header-height);
+        left: 0; width: 100%;
+        background-color: var(--ak-dark-bg); /* Témától függő (header háttere) */
+        padding: 15px 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+        border-top: 1px solid var(--ak-border-color); /* Témától függő */
+    }
+    #main-nav ul.mobile-menu-active { display: flex; }
+    #main-nav li { margin: 0; width: 100%; }
+    #main-nav li:not(:last-child) { border-bottom: 1px solid var(--ak-border-color); } /* Témától függő */
+    #main-nav a {
+        display: block; padding: 15px 20px;
+        width: 100%; text-align: center;
+        font-size: 1rem;
+        /* A színét a :hover/:active szabályok kezelik témától függően */
+    }
+    #main-nav a::after { display: none; }
+    /* A :hover és :active szabályok már a body[data-theme="dark"] alatt is definiálva vannak */
+
+    #main-nav a.nav-booking-button,
+    body[data-theme="dark"] #main-nav a.nav-booking-button { /* Expliciten sötét szöveg a gombon */
+        color: #1F2937 !important;
+    }
+
+
+    /* Header Actions mobilon */
+    .header-actions { margin-left: auto; }
+    .header-actions .button.main-booking-button { display: none; }
+    .real-time-wait-display { display: none; }
+    #mobile-menu-toggle { display: block; margin-left: 10px; order: 4; }
+     #main-header .container {
+          justify-content: space-between;
+     }
+     #main-nav { margin-right: 0;}
+
+
+    /* Mobil Szekciók */
+    .grid-3-col,
+    .daily-offer-wrapper,
+    .offers-carousel,
+    .instagram-grid,
+    .footer-grid { grid-template-columns: 1fr; }
+    .grid-2-col-uneven { grid-template-columns: 1fr; }
+
+    .about-text-content .button { max-width: 100%; }
+
+    .daily-offer-wrapper { padding: 20px; }
+    .chef-message { padding: 10px; }
+
+    .form-grid-inline { grid-template-columns: 1fr; gap: 15px; }
+    .form-grid-inline .button { margin-top: 10px; }
+
+    /* Mobil Footer */
+    .footer-column { text-align: center; margin-bottom: 30px; }
+    .footer-column:last-child { margin-bottom: 0; }
+    .social-icons-footer { text-align: center; }
+    .social-icons-footer a { margin: 0 10px; }
+    #newsletterFormFooter { max-width: 100%; }
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arany Kanál Étterem - Prémium Gasztronómiai Élmények Budapesten</title>
+    <meta name="description" content="Fedezze fel az Arany Kanál Étterem megújult, prémium világát! Modern, letisztult dizájn, felejthetetlen ízek, napi ajánlatok és kifogástalan vendéglátás várja Önt Budapest szívében.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style_index.css"> 
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body data-theme="light">
+
+    <header id="main-header">
+        <div class="container">
+            <a href="index.html" id="logo" class="logo">
+                Arany Kanál <span class="logo-accent">Étterem</span>
+            </a>
+            <nav id="main-nav">
+                <button id="mobile-menu-toggle" aria-label="Menü megjelenítése/elrejtése" aria-expanded="false" aria-controls="main-nav-ul">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="main-nav-ul">
+                    <li><a href="index.html" class="active">Főoldal</a></li>
+                    <li><a href="#about-section">Rólunk</a></li>
+                    <li><a href="menu.html">Étlap</a></li>
+                    <li><a href="#daily-offer-section">Napi Ajánlat</a></li>
+                    <li><a href="contact.html">Kapcsolat</a></li> 
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div id="real-time-wait-index" class="real-time-wait-display"> 
+                    <i class="fas fa-clock"></i> Várható várakozás: <span id="wait-time-value-index">betöltés...</span>
+                </div>
+                <button id="theme-toggle-button" aria-label="Sötét/Világos mód váltása"><i class="fas fa-moon"></i></button>
+                <div class="language-switcher">
+                    <button class="current-lang" aria-haspopup="true" aria-expanded="false">HU <i class="fas fa-caret-down"></i></button>
+                    <div class="lang-dropdown" role="menu">
+                        <a href="#" data-lang="hu" role="menuitem">Magyar</a>
+                        <a href="#" data-lang="en" role="menuitem">English</a>
+                    </div>
+                </div>
+                <a href="booking.html" class="button button-primary main-booking-button">Asztalfoglalás</a> 
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero-section">
+    <div class="hero-background-slider">
+        <div class="hero-slide active" style="background-image: url('https://avalonresort.hu/wp-content/uploads/2024/02/0000__DSC8697-optimized.jpg');"></div>
+        </div>
+		<div class="hero-overlay"></div>
+		<div class="container hero-content">
+				<h1 class="hero-title">Üdvözöljük az <span class="text-gold">Arany Kanál</span> Étteremben!</h1>
+						<p class="hero-slogan">Ahol a hagyomány és az innováció találkozik minden tányéron. Fedezze fel Budapest rejtett kincsét!</p>
+						<a href="booking.html" class="button button-gold button-large hero-booking-button">
+						<i class="fas fa-calendar-alt"></i> Asztalfoglalás Most
+						</a>
+				</div>
+		</section>
+
+        <section id="about-section" class="section-padding">
+            <div class="container">
+                <div class="grid-2-col-uneven">
+                    <div class="about-text-content animate-on-scroll">
+                        <h2 class="section-title">A Tökéletesség Íze, <span class="text-gold">Szenvedéllyel Készítve</span></h2>
+                        <p class="subtitle">Ismerje meg az Arany Kanál Étterem történetét, filozófiáját és azt, ami minket különlegessé tesz.</p>
+                        <p>Az Arany Kanál Étterem nem csupán egy hely, ahol étkezhet – nálunk a gasztronómia művészet. Évekkel ezelőtt azzal az egyszerű céllal indultunk, hogy vendégeinknek a legmagasabb minőségű, helyi alapanyagokból készült, innovatív, mégis a magyar konyha gyökereihez hű ételeket kínáljunk. Séfünk, és elkötelezett csapata minden tányéron a tökéletességre törekszik.</p>
+                        <p>Koncepciónk a "farm-to-table" elvét követi, ahol csak lehet, gondosan válogatott, szezonális alapanyagokat használunk közvetlenül a termelőktől. Szenvedélyünk az ételek iránt minden fogásunkban megmutatkozik, célunk, hogy minden látogatás egyedülálló és emlékezetes élmény legyen.</p>
+                        <a href="menu.html" class="button button-outline-primary"><i class="fas fa-book-open"></i> Étlapunk felfedezése</a>
+                    </div>
+                    <div class="about-image-content animate-on-scroll" data-animation-delay="0.2s">
+                        
+                        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80" alt="Horváth Attila, az Arany Kanál Étterem séfje" class="image-styled responsive-image rounded-image shadow-image">
+                    </div>
+                </div>
+                <div class="ambiance-gallery section-padding-small">
+                    <h3 class="subsection-title text-center">Éttermi Hangulat Képekben</h3>
+                    <div class="grid-3-col">
+                        
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=450&q=80" alt="Modern és Elegáns Belső Tér" class="image-styled responsive-image rounded-image animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=450&q=80" alt="Vendégek az étteremben kellemes környezetben" class="image-styled responsive-image rounded-image animate-on-scroll" data-animation-delay="0.1s">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=450&q=80" alt="Terített asztal és ízléses dekoráció" class="image-styled responsive-image rounded-image animate-on-scroll" data-animation-delay="0.2s">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="daily-offer-section" class="section-padding bg-light-alt">
+            <div class="container">
+                <h2 class="section-title text-center"><i class="fas fa-star text-gold"></i> Mai Különlegességünk <i class="fas fa-star text-gold"></i></h2>
+                <div class="daily-offer-wrapper animate-on-scroll">
+                    <div class="daily-offer-image">
+                        
+                        <img src="https://i.ytimg.com/vi/rM9Y_GP-_jA/sddefault.jpg" alt="Napi ajánlat ínycsiklandó fogása" id="daily-offer-image-src" class="responsive-image rounded-image shadow-image">
+                    </div>
+                    <div class="daily-offer-content">
+                        <h3 id="daily-offer-title">Rosé Kacsamell Fügés Lilakáposzta-pürével</h3>
+                        <p id="daily-offer-description">Egy igazi ízorgia, amit séfünk a piac legfrissebb alapanyagaiból álmodott meg Önnek ma!</p>
+                        <div class="chef-message">
+                            <h4><i class="fas fa-pen-fancy"></i> A Séf Üzenete Ma Reggel:</h4>
+                            <blockquote id="chef-message-text">"A mai napot ez a különleges fogás teszi felejthetetlenné. Friss, ropogós, ahogy szeretjük! Remélem, annyira fogják élvezni, mint amilyen szeretettel készítettem!" - Horváth Attila</blockquote>
+                        </div>
+                        <a href="menu.html#daily-special-menu-section" class="button button-primary"><i class="fas fa-utensils"></i> Részletek és További Fogások</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="offers-section" class="section-padding bg-dark">
+            <div class="container">
+                <h2 class="section-title text-light text-center">Kiemelt Ajánlataink</h2>
+                <div class="offers-carousel animate-on-scroll"> 
+                    <div class="offer-card">
+                        <img src="https://images.unsplash.com/photo-1565299543923-37dd37887442?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Heti Séfajánlat" class="offer-card-image">
+                        <div class="offer-content">
+                            <span class="offer-tag">Ezen a Héten</span>
+                            <h3>Séfünk Heti Kreációja</h3>
+                            <p>Kóstolja meg séfünk limitált ideig elérhető, 3 fogásos különlegességét, melyet a hét legfrissebb alapanyagai ihlettek.</p>
+                            <p class="offer-price">18 900 Ft / fő</p>
+                            <a href="menu.html#chef-weekly" class="button button-outline-light">Részletek</a>
+                        </div>
+                    </div>
+                    <div class="offer-card">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Üzleti Ebéd" class="offer-card-image">
+                        <div class="offer-content">
+                            <span class="offer-tag">-20% Hétköznap 12-15h</span>
+                            <h3>Prémium Üzleti Ebéd</h3>
+                            <p>Lenyűgöző kétfogásos menü üzleti megbeszéléseihez, hétköznapokon kedvezményes áron.</p>
+                            <p class="offer-price">12 000 Ft <span class="original-price">15 000 Ft</span></p>
+                            <a href="menu.html#business-lunch" class="button button-outline-light">Megnézem</a>
+                        </div>
+                    </div>
+                    <div class="offer-card">
+                        <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Vasárnapi Családi Asztal" class="offer-card-image">
+                        <div class="offer-content">
+                            <span class="offer-tag">Minden Vasárnap</span>
+                            <h3>Családi Vasárnap az Arany Kanálban</h3>
+                            <p>Bőséges családi tálak, gyerekbarát fogások és meglepetés desszert a legkisebbeknek. Töltsék nálunk a vasárnapot!</p>
+                            <p class="offer-price">Kérje Egyedi Ajánlatunkat!</p>
+                            <a href="contact.html" class="button button-outline-light">Érdeklődés</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="food-preview-section" class="section-padding">
+            <div class="container">
+                <h2 class="section-title text-center">Kóstoló Kiemelt Fogásainkból</h2>
+                <div class="grid-3-col food-preview-grid">
+                    
+                    <div class="food-item-card animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=450&q=80" alt="Borjúszűz Erdei Gombákkal" class="responsive-image rounded-image">
+                        <div class="food-item-content">
+                            <h4>Borjúszűz Erdei Gombákkal</h4>
+                            <p>Rozmaringos borjúszűz, tejszínes erdei gombákkal, házi készítésű burgonyakrokettel.</p>
+                            <p class="food-item-price">9 200 Ft</p>
+                        </div>
+                    </div>
+                    <div class="food-item-card animate-on-scroll" data-animation-delay="0.1s">
+                        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=450&q=80" alt="Lazac Steak Spárgával" class="responsive-image rounded-image">
+                        <div class="food-item-content">
+                            <h4>Norvég Lazac Steak</h4>
+                            <p>Grillezett lazacfilé, hollandi mártással, friss zöld spárgával és citrusos salátával.</p>
+                            <p class="food-item-price">8 500 Ft</p>
+                        </div>
+                    </div>
+                    <div class="food-item-card animate-on-scroll" data-animation-delay="0.2s">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=450&q=80" alt="Arany Kanál Desszertál" class="responsive-image rounded-image">
+                        <div class="food-item-content">
+                            <h4>Arany Kanál Desszertál</h4>
+                            <p>Válogatás séfünk legfinomabb házi készítésű édességeiből, friss idénygyümölcsökkel.</p>
+                            <p class="food-item-price">4 200 Ft</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center section-padding-small">
+                    <a href="menu.html" class="button button-primary button-large"><i class="fas fa-concierge-bell"></i> Teljes Étlapunk Megtekintése</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="loyalty-program-intro" class="section-padding bg-dark">
+            <div class="container text-center animate-on-scroll">
+                <h2 class="section-title text-light"><i class="fas fa-gem text-gold"></i> Legyen Ön is Törzsvendégünk! <i class="fas fa-gem text-gold"></i></h2>
+                <p class="subtitle text-light" style="color: #e0e0e0; max-width: 800px; margin-bottom: 25px;">Csatlakozzon exkluzív Arany Kanál Hűségprogramunkhoz! Gyűjtsön pontokat minden fogyasztás után, és váltsa be őket kedvezményekre, különleges ajánlatokra vagy akár egy ingyen fogásra. Digitális ételkártyáján mindig nyomon követheti egyenlegét.</p>
+                
+                <a href="#loyalty-details-modal" id="loyaltyDetailsLink" class="button button-gold button-large">Részletek és Csatlakozás <i class="fas fa-arrow-right"></i></a>
+                
+                
+            </div>
+        </section>
+
+        <section id="booking-form-section" class="section-padding bg-light-alt">
+            <div class="container animate-on-scroll">
+                <h2 class="section-title text-center">Foglalja le Asztalát Pillanatok Alatt</h2>
+                <div class="booking-form-wrapper-inline">
+                    <form id="homeBookingForm" action="booking.html" method="GET"> 
+                        <div class="form-grid-inline">
+                            <div class="form-group">
+                                <label for="homeBookingDate" class="visually-hidden">Dátum</label>
+                                <input type="date" id="homeBookingDate" name="date" required title="Válasszon dátumot">
+                            </div>
+                            <div class="form-group">
+                                <label for="homeBookingTime" class="visually-hidden">Időpont</label>
+                                <input type="time" id="homeBookingTime" name="time" min="12:00" max="22:00" step="900" required title="Válasszon időpontot">
+                            </div>
+                            <div class="form-group">
+                                <label for="homeBookingGuests" class="visually-hidden">Személyek</label>
+                                <input type="number" id="homeBookingGuests" name="guests" min="1" max="10" value="2" required title="Vendégek száma">
+                            </div>
+                            <div class="form-group">
+								<button type="submit" class="button button-primary button-large">
+								<i class="fas fa-search"></i> Keresés
+							</button>
+						</div>
+                        </div>
+                        <div id="homeBookingFormStatus" class="form-status-message-inline text-center" aria-live="polite"></div>
+                    </form>
+                    <p class="booking-alternative-inline text-center">Nagyobb csoport esetén vagy különleges kéréssel? <a href="contact.html" class="text-gold">Lépjen velünk kapcsolatba!</a></p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="sustainability-intro" class="section-padding">
+            <div class="container text-center animate-on-scroll">
+                <h2 class="section-title"><i class="fas fa-leaf text-gold" style="color: #28a745;"></i> Gondoskodás a Jövőről: Fenntarthatóság az Arany Kanálnál</h2>
+                <p class="subtitle" style="max-width: 800px;">Büszkék vagyunk rá, hogy ételeinkhez a legjobb minőségű, lehetőség szerint helyi és szezonális alapanyagokat használjuk. Elkötelezettek vagyunk a fenntartható gazdálkodás és a környezettudatos működés mellett. Ismerje meg partnereinket és fenntarthatósági törekvéseinket!</p>
+                
+                <a href="#sustainability-details" class="button button-outline-primary">Tudjon meg többet <i class="fas fa-seedling"></i></a>
+            </div>
+        </section>
+
+        <section id="instagram-feed-section" class="section-padding bg-light-alt">
+            <div class="container text-center">
+                <h2 class="section-title">Legfrissebb Pillanataink <a href="#" target="_blank" rel="noopener" class="social-handle">@AranyKanalEtterem <i class="fab fa-instagram"></i></a></h2>
+                <div class="instagram-grid animate-on-scroll">
+                    
+                    <img src="https://welovebudapest.com/i/e9/ono-poke-bowl-20190930-csudai-sandor-049.jpg" alt="Instagram kép ételről" class="responsive-image rounded-image">
+                    <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=350&h=350&q=80" alt="Instagram kép hangulatról" class="responsive-image rounded-image">
+                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=350&h=350&q=80" alt="Instagram kép vendégről" class="responsive-image rounded-image">
+                    <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=350&h=350&q=80" alt="Instagram kép desszertről" class="responsive-image rounded-image">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column about-column">
+                    <h4>Az Arany Kanál Étteremről</h4>
+                    <p>Prémium ízek, felejthetetlen pillanatok. Modern magyaros konyha, minőségi, helyi alapanyagokból, Budapest szívében.</p>
+                    <div class="social-icons-footer">
+                        <a href="#" aria-label="Facebook oldalunk (új ablakban nyílik)" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram profilunk (új ablakban nyílik)" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TripAdvisor értékeléseink (új ablakban nyílik)" target="_blank" rel="noopener"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column links-column">
+                    <h4>Hasznos Oldalak</h4>
+                    <ul>
+                        <li><a href="#about-section">Rólunk</a></li>
+                        <li><a href="menu.html">Étlap</a></li>
+                        <li><a href="#daily-offer-section">Napi Ajánlat</a></li>
+                        <li><a href="#offers-section">Ajánlataink</a></li>
+                        <li><a href="contact.html">Kapcsolat</a></li>
+                        <li><a href="booking.html">Asztalfoglalás</a></li>
+                        <li><a href="events.html">Rendezvények</a></li> 
+                        <li><a href="#loyalty-program-intro">Hűségprogram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column contact-column">
+                    <h4>Elérhetőségek</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 1051 Budapest, Zrínyi utca 5.</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+3612345678">+36 1 234 5678</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:foglalas@aranykanaletterem.hu">foglalas@aranykanaletterem.hu</a></p>
+                </div>
+                <div class="footer-column newsletter-column">
+                    <h4>Maradjon Képben!</h4>
+                    <p>Legyen naprakész ajánlatainkkal és eseményeinkkel!</p>
+                    <form id="newsletterFormFooter"> 
+                        <input type="email" id="newsletterEmailFooter" name="email" placeholder="E-mail címe" required>
+                        <button type="submit" class="button button-gold button-small">Feliratkozom</button>
+                    </form>
+                    <small id="newsletterStatusFooter" aria-live="polite"></small>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Arany Kanál Étterem. Minden jog fenntartva. | <a href="#">Adatkezelési Tájékoztató</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script_index.js"></script>
+</body>
+</html>

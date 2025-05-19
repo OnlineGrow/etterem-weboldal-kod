@@ -1,0 +1,414 @@
+/* === ÉTLAP OLDAL SPECIFIKUS STÍLUSOK === */
+
+/* --- Étlap oldal Hero szekció (hasonló a többi aloldalhoz) --- */
+#menu-hero-section.page-hero-short {
+    position: relative;
+    height: 40vh;
+    min-height: 280px;
+    max-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--ak-text-light);
+    overflow: hidden;
+    background-color: var(--ak-dark-bg);
+}
+#menu-hero-section .hero-background-image {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center center;
+    z-index: 1;
+    filter: brightness(0.75);
+}
+#menu-hero-section .hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(26, 46, 63, 0.5), rgba(26, 46, 63, 0.7));
+    z-index: 2;
+}
+#menu-hero-section .hero-content {
+    position: relative;
+    z-index: 3;
+    padding-top: var(--header-height, 70px);
+}
+#menu-hero-section .hero-title-small {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+}
+#menu-hero-section .hero-slogan-small {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 0; max-width: 750px;
+    margin-left: auto; margin-right: auto;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+
+/* --- Étlap Tartalom --- */
+#menu-display-section {
+    background-color: var(--ak-content-bg);
+    border-top: 1px solid var(--ak-border-color, #dee2e6);
+}
+
+/* Kereső és Szűrők */
+.menu-actions {
+    margin-bottom: 50px;
+    padding: 25px;
+    background-color: var(--ak-light-bg-alt, #F4F8FA);
+    border-radius: var(--border-radius-main);
+    border: 1px solid var(--ak-border-color, #dee2e6);
+}
+.search-filter-wrapper {
+    margin-bottom: 25px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items: center;
+    gap: 20px;
+}
+#menu-search {
+    padding: 12px 18px;
+    border: 1px solid var(--ak-border-color, #ccc);
+    border-radius: var(--border-radius-main);
+    min-width: 280px;
+    flex-grow: 1;
+    max-width: 450px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
+#menu-search:focus {
+    border-color: var(--ak-primary-blue, #007BFF);
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Allergén szűrő konténer és gomb */
+.filter-dropdown-placeholder {
+    position: relative;
+}
+#allergen-filter-toggle {
+    font-weight: 500;
+    min-width: 180px;
+}
+#allergen-filter-toggle i {
+    margin-right: 8px;
+}
+
+/* Allergén lenyíló menü */
+#allergen-filter-dropdown {
+    /* display: none; JS kezeli */
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--ak-content-bg, #fff);
+    box-shadow: var(--box-shadow-dark);
+    padding: 20px;
+    border-radius: var(--border-radius-main);
+    z-index: 100;
+    border: 1px solid var(--ak-border-color, #dee2e6);
+    min-width: 250px;
+    text-align: left;
+}
+#allergen-filter-dropdown p {
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ak-dark-bg, #343a40);
+    border-bottom: 1px solid var(--ak-border-color, #dee2e6);
+    padding-bottom: 10px;
+}
+#allergen-filter-dropdown label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--ak-text-dark, #343a40);
+    cursor: pointer;
+    /* Tördeli a szöveget, ha túl hosszú */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+#allergen-filter-dropdown input[type="checkbox"] {
+    margin-right: 8px;
+    vertical-align: middle; /* Checkbox igazítása */
+    accent-color: var(--ak-primary-blue, #007BFF);
+}
+
+
+/* Kategória szűrő gombok */
+.filter-buttons { margin-bottom: 20px; text-align: center; /* Gombok középre */ }
+.filter-buttons .button {
+    margin: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.filter-buttons .button.active {
+    background-color: var(--ak-primary-blue, #007BFF);
+    color: #fff;
+    border-color: var(--ak-primary-blue, #007BFF);
+    font-weight: 600;
+}
+/* PDF letöltő gomb */
+.menu-actions > .button-secondary { /* Közvetlen gyerek kiválasztása */
+    margin-top: 15px; /* Kisebb térköz */
+    color: var(--ak-text-muted, #6C757D);
+    border-color: var(--ak-border-color, #dee2e6);
+    font-weight: 500;
+    display: inline-block; /* Középre igazításhoz kell */
+}
+.menu-actions > .button-secondary:hover {
+    color: var(--ak-text-dark, #343a40);
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+
+/* --- Étlap Kategóriák és Tételek --- */
+.menu-category { margin-bottom: 60px; }
+
+.category-title {
+    font-family: var(--font-primary);
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+    font-weight: 700;
+    color: var(--ak-dark-bg, #343a40);
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+.category-title::after {
+    content: ''; position: absolute; bottom: 0; left: 50%;
+    transform: translateX(-50%); width: 70px; height: 3px;
+    background-color: var(--ak-accent-gold, #FFA000);
+    border-radius: 2px;
+}
+.category-title.text-gold { color: var(--ak-accent-gold, #FFA000) !important; }
+.category-title.text-gold::after { background-color: var(--ak-primary-blue, #007BFF); }
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Étel kártya */
+.menu-item-card {
+    background-color: var(--ak-content-bg, #fff);
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--box-shadow-light);
+    overflow: hidden; /* Fontos a képhez és a sarkokhoz */
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-main), box-shadow var(--transition-main), border-color var(--transition-main);
+    border: 1px solid var(--ak-border-color, #dee2e6);
+}
+.menu-item-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--box-shadow-dark);
+    border-color: var(--ak-accent-gold, #FFA000);
+}
+.menu-item-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover; /* Levágja, nem torzítja a képet */
+    border-bottom: 3px solid var(--ak-accent-gold, #FFA000);
+    display: block;
+}
+.menu-item-details {
+    padding: 20px 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.menu-item-details h3 {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ak-dark-bg, #343a40);
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+/* Címkék (V, GF) */
+.vegetarian-tag, .glutenfree-tag {
+     font-size: 0.75rem;
+     font-weight: 600;
+     padding: 2px 6px;
+     border-radius: 3px;
+     margin-left: 8px;
+     vertical-align: middle;
+     display: inline-block;
+}
+.vegetarian-tag { background-color: #e8f5e9; color: #155724; border: 1px solid #c8e6c9;}
+.glutenfree-tag { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba;}
+
+.description {
+    font-size: 0.9rem;
+    color: var(--ak-text-muted, #6C757D);
+    margin-bottom: 15px;
+    flex-grow: 1;
+    line-height: 1.6;
+    /* Túlnyúló szöveg kezelése (opcionális) */
+    /* white-space: normal; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    /* display: -webkit-box; */
+    /* -webkit-line-clamp: 3; */ /* Max 3 sor látszik */
+    /* -webkit-box-orient: vertical; */
+}
+
+/* Metaadatok (kalória, allergén) és ár sora */
+.item-meta {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid var(--ak-border-color, #dee2e6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 15px;
+    font-size: 0.9rem;
+}
+.calorie-info {
+    color: var(--ak-text-muted, #6C757D);
+    white-space: nowrap;
+}
+.calorie-info i { color: var(--ak-error, #dc3545); margin-right: 4px; font-size: 0.9em;}
+.calorie-value { font-weight: 600; color: var(--ak-text-dark, #343a40);}
+
+.allergen-icons { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; /* Jobb igazítás */ }
+.allergen-icon {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--ak-text-muted, #6C757D);
+    border: 1px solid var(--ak-border-color, #dee2e6);
+    background-color: var(--ak-light-bg-alt, #F4F8FA);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: help;
+    position: relative;
+}
+/* Tooltip Stílus (egyszerű) */
+.allergen-tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: var(--border-radius-main);
+    font-size: 0.85rem;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 110;
+    display: none;
+    pointer-events: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.price {
+    font-family: var(--font-primary);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ak-primary-blue, #007BFF);
+    text-align: right;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+/* Napi ajánlat kártya kiemelése */
+.daily-special-card {
+    border-color: var(--ak-accent-gold, #FFA000);
+    background-color: #fffef5;
+    box-shadow: var(--box-shadow-dark);
+}
+.daily-special-card .menu-item-image {
+    border-bottom-color: var(--ak-primary-blue, #007BFF);
+}
+.daily-special-card h3 { color: var(--ak-dark-bg, #343a40); display: flex; justify-content: space-between; align-items: center;}
+.tag-special {
+    font-size: 0.75rem;
+    background-color: var(--ak-accent-gold, #FFA000);
+    color: var(--ak-dark-bg, #1A2E3F);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 700;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+.chef-message-menu {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: rgba(0, 123, 255, 0.05);
+    border-left: 4px solid var(--ak-primary-blue, #007BFF);
+    border-radius: 4px;
+}
+.chef-message-menu h4 {
+    font-size: 1rem; margin-bottom: 5px; color: var(--ak-primary-blue, #007BFF); font-weight: 600;
+}
+.chef-message-menu h4 i { color: var(--ak-primary-blue, #007BFF); }
+.chef-message-menu blockquote {
+    font-size: 0.9em; font-style: italic; color: var(--ak-text-muted, #6C757D);
+    margin-bottom: 0; padding: 0; border: none;
+}
+
+
+/* Nincs találat üzenet */
+#no-results-message {
+    padding: 30px 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--ak-text-muted, #6C757D);
+    background-color: var(--ak-light-bg-alt, #F4F8FA);
+    border-radius: var(--border-radius-main);
+    border: 1px dashed var(--ak-border-color, #dee2e6);
+    display: none;
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+/* Italok Szekció */
+#drinks-category .subtitle { margin-bottom: 20px; }
+#drinks-category .button-secondary { margin-top: 10px; }
+
+
+/* Étlap oldal CTA (Booking) */
+#booking-cta {
+     text-align: center;
+}
+#booking-cta .section-title { /* Címre vonatkozó specifikus stílus */
+     color: var(--ak-text-light) !important;
+}
+#booking-cta .subtitle { /* Alcímre vonatkozó specifikus stílus */
+     color: var(--ak-text-light) !important;
+     margin-left: auto;  /* HOZZÁADVA: Alcím középre igazítása */
+     margin-right: auto; /* HOZZÁADVA: Alcím középre igazítása */
+}
+
+
+/* --- Étlap oldal reszponzív felülírásai --- */
+@media (max-width: 992px) {
+    .menu-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+}
+@media (max-width: 768px) {
+    .menu-actions { padding: 20px; }
+    .search-filter-wrapper { flex-direction: column; gap: 15px; }
+    #menu-search { max-width: 100%; min-width: auto; }
+    #allergen-filter-toggle { width: 100%; }
+    #allergen-filter-dropdown {
+        left: 10px; right: 10px; transform: none; width: auto;
+    }
+
+    .menu-grid { grid-template-columns: 1fr; gap: 25px; }
+    .menu-item-details { padding: 15px 20px; }
+    .item-meta {
+         flex-direction: row;
+         align-items: center;
+         justify-content: space-between;
+         font-size: 0.85rem;
+         gap: 5px 10px;
+    }
+    .price { font-size: 1.2rem; margin-left: 0; }
+}

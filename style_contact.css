@@ -1,0 +1,301 @@
+/* === KAPCSOLATI OLDAL SPECIFIKUS STÍLUSOK === */
+
+/* --- Kapcsolati oldal Hero szekció (Változatlan) --- */
+#contact-hero-section.page-hero-short {
+    position: relative;
+    height: 40vh;
+    min-height: 280px;
+    max-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--ak-text-light);
+    overflow: hidden;
+    background-color: var(--ak-dark-bg);
+}
+#contact-hero-section .hero-background-image {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center center;
+    z-index: 1;
+    filter: brightness(0.8);
+}
+#contact-hero-section .hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(26, 46, 63, 0.6), rgba(26, 46, 63, 0.8));
+    z-index: 2;
+}
+#contact-hero-section .hero-content {
+    position: relative;
+    z-index: 3;
+    padding-top: var(--header-height, 70px);
+}
+#contact-hero-section .hero-title-small {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+}
+#contact-hero-section .hero-slogan-small {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 0; max-width: 750px;
+    margin-left: auto; margin-right: auto;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* --- Kapcsolat oldal tartalom --- */
+#contact-details-section {
+    background-color: var(--ak-content-bg);
+}
+
+.grid-2-col-contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+@media (min-width: 992px) {
+    .grid-2-col-contact {
+        grid-template-columns: 1fr 1.1fr;
+        gap: 60px;
+    }
+}
+
+.contact-info .subsection-title,
+.contact-form-container .subsection-title {
+    padding-bottom: 12px;
+    margin-bottom: 35px;
+    border-bottom: 2px solid var(--ak-accent-gold, #FFA000);
+    display: inline-block;
+}
+
+/* Elérhetőségek oszlop */
+.contact-info-item { display: flex; align-items: flex-start; margin-bottom: 25px; }
+.contact-icon {
+    font-size: 1.5rem;
+    color: var(--ak-primary-blue);
+    margin-right: 20px;
+    margin-top: 5px;
+    width: 30px;
+    text-align: center;
+}
+.contact-info-item strong { display: block; font-weight: 600; margin-bottom: 5px; color: var(--ak-dark-bg); }
+body[data-theme="dark"] .contact-info-item strong { color: var(--ak-text-dark); }
+.contact-info-item p { margin-bottom: 5px; line-height: 1.6; color: var(--ak-text-muted); }
+.contact-info-item a { color: var(--ak-primary-blue); font-weight: 500; }
+.contact-info-item a:hover,
+.contact-info-item a:focus { color: var(--ak-accent-gold); text-decoration: underline; }
+.contact-info-item .map-link.button { margin-top: 10px; }
+.contact-info-item .map-link.button:hover { background-color: var(--ak-primary-blue); color: #fff; }
+.contact-info-item .map-link.button i { margin-right: 5px; }
+.social-icons-contact { margin-top: 30px; }
+.social-icons-contact strong { display: block; margin-bottom: 10px; font-weight: 600; }
+.social-icons-contact a {
+    color: var(--ak-text-muted);
+    font-size: 1.6rem;
+    margin-right: 15px;
+    transition: color var(--transition-main);
+}
+.social-icons-contact a:hover { color: var(--ak-primary-blue); }
+body[data-theme="dark"] .social-icons-contact a:hover { color: var(--ak-accent-gold); }
+
+/* === Kapcsolatfelvételi űrlap oszlop (Keret nélküli inputokkal) === */
+.contact-form-container .form-intro-text {
+    color: var(--ak-text-muted, #6C757D);
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.contact-form-container .form-intro-text a {
+    font-weight: 600;
+}
+.contact-form-container .form-group { margin-bottom: 25px; }
+
+/* --- ÚJ, KERET NÉLKÜLI INPUT STÍLUS (csak itt érvényes) --- */
+.contact-form-container input[type="text"],
+.contact-form-container input[type="email"],
+.contact-form-container textarea {
+    width: 100%;
+    padding: 14px 18px;
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    color: var(--ak-text-dark);
+    background-color: var(--ak-light-bg-alt, #F4F8FA);
+    border: none;
+    border-radius: var(--border-radius-main);
+    transition: box-shadow var(--transition-main), background-color var(--transition-main);
+    min-height: 50px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+    appearance: none;
+}
+.contact-form-container input::placeholder,
+.contact-form-container textarea::placeholder {
+    color: var(--ak-text-muted);
+    opacity: 0.7;
+    font-style: normal;
+    font-size:0.95rem;
+}
+/* Focus stílus - külső árnyék */
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+    outline: none;
+    background-color: var(--ak-content-bg);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25), inset 0 1px 1px rgba(0,0,0,0.05);
+}
+body[data-theme="dark"] .contact-form-container input:focus,
+body[data-theme="dark"] .contact-form-container textarea:focus {
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3), inset 0 1px 1px rgba(255,255,255,0.05); /* Sötét téma focus glow */
+}
+
+
+.contact-form-container label {
+    display: block; font-family: var(--font-primary); font-weight: 600;
+    font-size: 0.9rem; color: var(--ak-text-dark); margin-bottom: 8px;
+}
+.contact-form-container textarea {
+    resize: vertical;
+    min-height: 130px;
+    line-height: 1.6;
+}
+
+/* Hibajelzés */
+.contact-form-container .form-error-message {
+    display: none;
+    font-size: 0.85rem;
+    color: var(--ak-error, #dc3545);
+    margin-top: 6px;
+    min-height: 1em;
+    font-weight: 500;
+}
+/* Input hibaállapot - piros külső árnyék */
+.contact-form-container input.input-error,
+.contact-form-container textarea.input-error {
+     background-color: #fffafa;
+     box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.5), inset 0 1px 3px rgba(0,0,0,0.08);
+}
+body[data-theme="dark"] .contact-form-container input.input-error,
+body[data-theme="dark"] .contact-form-container textarea.input-error {
+     background-color: rgba(220, 53, 69, 0.1); /* Sötétebb hiba háttér */
+     box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.6), inset 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.contact-form-container input.input-error:focus,
+.contact-form-container textarea.input-error:focus {
+     box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.3), inset 0 1px 1px rgba(0,0,0,0.05);
+}
+body[data-theme="dark"] .contact-form-container input.input-error:focus,
+body[data-theme="dark"] .contact-form-container textarea.input-error:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.4), inset 0 1px 1px rgba(0,0,0,0.05);
+}
+
+
+/* Küldés gomb */
+.contact-form-container .button-large {
+    width: 100%;
+    margin-top: 10px;
+}
+/* Státusz üzenet */
+#contactFormStatus.form-status {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: var(--border-radius-main);
+    font-size: 0.95rem;
+    display: none; /* JS kezeli a megjelenítést */
+    text-align: center;
+}
+#contactFormStatus.form-status.success {
+    background-color: #d4edda; /* Világos zöld */
+    color: #155724; /* Sötét zöld */
+    border: 1px solid #c3e6cb;
+}
+#contactFormStatus.form-status.error {
+    background-color: #f8d7da; /* Világos piros */
+    color: #721c24; /* Sötét piros */
+    border: 1px solid #f5c6cb;
+}
+body[data-theme="dark"] #contactFormStatus.form-status.success {
+    background-color: #155724; /* Sötét zöld */
+    color: #d4edda; /* Világos zöld */
+    border-color: #208a3c;
+}
+body[data-theme="dark"] #contactFormStatus.form-status.error {
+    background-color: #721c24; /* Sötét piros */
+    color: #f8d7da; /* Világos piros */
+    border-color: #a9303e;
+}
+
+/* --- Privát Rendezvény Szekció --- */
+#private-events-section {
+     /* Alap stílusok a szekcióhoz (pl. background-color a .bg-light-alt-ból jön) */
+     /* A container div-en van text-center, ami a közvetlen szövegeket és inline elemeket középre rendezi. */
+}
+#private-events-section .section-title {
+     /* Cím stílusai */
+}
+#private-events-section .subtitle { /* Ez az a bekezdés, amit középre kell igazítani */
+    margin-left: auto;  /* !! FONTOS !! Ez igazítja középre */
+    margin-right: auto; /* !! FONTOS !! Ez igazítja középre */
+    /* A max-width: 800px a style_index.css .subtitle szabályából jön */
+    /* Az inline style="margin-bottom: 20px;" az HTML-ből felülírja az alap .subtitle margót */
+}
+.event-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+    text-align: left; /* Visszaállítjuk balra igazításra a grid elemek tartalmát */
+}
+.event-feature-item {
+    padding: 20px;
+    background-color: var(--ak-content-bg); /* Témától függő */
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--box-shadow-light);
+    border: 1px solid var(--ak-border-color); /* Témától függő */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.event-feature-item:hover {
+     transform: translateY(-4px);
+     box-shadow: var(--box-shadow-dark);
+}
+.event-feature-item h4 {
+    color: var(--ak-primary-blue); /* Témától függő */
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.event-feature-item h4 i { margin-right: 8px; }
+.event-feature-item p {
+    font-size: 0.9em;
+    color: var(--ak-text-muted); /* Témától függő */
+    line-height: 1.6;
+    margin-bottom: 0; /* Nincs szükség extra margóra */
+}
+#private-events-section .button {
+    margin-top: 10px; /* Kisebb margó a gombra */
+}
+#private-events-section > .container > p { /* Az "events.html" linket tartalmazó p tag */
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: var(--ak-text-muted); /* Témától függő */
+}
+
+
+/* --- Térkép Szekció --- */
+#map-section { padding: 0; /* Nincs szükség extra paddingra, ha a iframe kitölti */ }
+#map-section iframe { border: 0; display: block; /* Eltávolítja az esetleges alsó rést */ }
+
+
+/* --- Kapcsolat oldal reszponzív felülírásai --- */
+@media (max-width: 992px) {
+     .grid-2-col-contact { gap: 30px; }
+}
+@media (max-width: 768px) {
+     .contact-info .subsection-title,
+     .contact-form-container .subsection-title { margin-bottom: 25px; }
+     .contact-info-item { margin-bottom: 20px; }
+     .contact-icon { margin-right: 15px; font-size: 1.3rem;}
+     .event-features-grid { gap: 15px; }
+     .event-feature-item { padding: 15px; }
+
+}

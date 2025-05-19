@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étlap - Arany Kanál Étterem</title>
+    <meta name="description" content="Tekintse meg az Arany Kanál Étterem részletes étel- és italkínálatát. Szűrjön allergénekre, találja meg kedvencét, és ismerje meg napi ajánlatunkat!">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style_index.css"> 
+    <link rel="stylesheet" href="style_menu.css"> 
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body data-theme="light"> 
+
+    <header id="main-header">
+        <div class="container">
+            <a href="index.html" id="logo" class="logo">
+                Arany Kanál <span class="logo-accent">Étterem</span>
+            </a>
+            <nav id="main-nav">
+                <button id="mobile-menu-toggle" aria-label="Menü megjelenítése/elrejtése" aria-expanded="false" aria-controls="main-nav-ul">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="main-nav-ul">
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="index.html#about-section">Rólunk</a></li>
+                    <li><a href="menu.html" class="active">Étlap</a></li>
+                    <li><a href="index.html#daily-offer-section">Napi Ajánlat</a></li>
+                    <li><a href="contact.html">Kapcsolat</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div id="real-time-wait-menu" class="real-time-wait-display">
+                    <i class="fas fa-clock"></i> Várható várakozás: <span id="wait-time-value-menu">betöltés...</span>
+                </div>
+                <button id="theme-toggle-button" aria-label="Sötét/Világos mód váltása"><i class="fas fa-moon"></i></button>
+                <div class="language-switcher">
+                    <button class="current-lang" aria-haspopup="true" aria-expanded="false">HU <i class="fas fa-caret-down"></i></button>
+                    <div class="lang-dropdown" role="menu">
+                        <a href="#" data-lang="hu" role="menuitem">Magyar</a>
+                        <a href="#" data-lang="en" role="menuitem">English</a>
+                    </div>
+                </div>
+                <a href="booking.html" class="button button-primary main-booking-button">Asztalfoglalás</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="menu-hero-section" class="page-hero-short" style="background-image: url('https://images.unsplash.com/photo-1504754524776-8f4f37790774?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=400&q=80');">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1 class="hero-title-small">Fedezze fel <span class="text-gold">Ízvilágunkat</span></h1>
+                <p class="hero-slogan-small">Válogatás a legfinomabb fogásokból, szezonális alapanyagokból, Önnek összeállítva.</p>
+            </div>
+        </section>
+
+        <section id="menu-display-section" class="section-padding">
+            <div class="container">
+                <div class="menu-actions text-center" style="margin-bottom: 40px;">
+                    <div class="search-filter-wrapper" style="margin-bottom: 30px; display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+                        <input type="search" id="menu-search" placeholder="Keressen ételt, összetevőt..." aria-label="Étel keresése az étlapon" style="padding: 12px 18px; border: 1px solid #ccc; border-radius: var(--border-radius-main); min-width: 280px; font-size: 1rem;">
+                        <div class="filter-dropdown-placeholder" id="allergen-filter-container">
+                            <button class="button button-outline-primary" id="allergen-filter-toggle" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-sliders-h"></i> Allergén Szűrő
+                            </button>
+                            <div id="allergen-filter-dropdown" class="filter-dropdown-content" style="display:none; position:absolute; background-color:white; box-shadow:var(--box-shadow-dark); padding:15px; border-radius:var(--border-radius-main); z-index:100;">
+                                <p style="margin-bottom:10px; font-weight:500;">Válassza ki a kerülendő allergéneket:</p>
+                                <label><input type="checkbox" name="allergen" value="gluten"> Glutén</label><br>
+                                <label><input type="checkbox" name="allergen" value="lactose"> Laktóz</label><br>
+                                <label><input type="checkbox" name="allergen" value="nuts"> Diófélék</label><br>
+                                <label><input type="checkbox" name="allergen" value="egg"> Tojás</label><br>
+                                <label><input type="checkbox" name="allergen" value="fish"> Hal</label><br>
+                                <label><input type="checkbox" name="allergen" value="celery"> Zeller</label><br>
+                                <label><input type="checkbox" name="allergen" value="mustard"> Mustár</label><br>
+                                <label><input type="checkbox" name="allergen" value="soya"> Szója</label><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="button button-outline-primary button-small filter-btn active" data-filter="all" aria-pressed="true">Mind</button>
+                        <button class="button button-outline-primary button-small filter-btn" data-filter="starter" aria-pressed="false">Előételek</button>
+                        <button class="button button-outline-primary button-small filter-btn" data-filter="soup" aria-pressed="false">Levesek</button>
+                        <button class="button button-outline-primary button-small filter-btn" data-filter="main" aria-pressed="false">Főételek</button>
+                        <button class="button button-outline-primary button-small filter-btn" data-filter="vegetarian" aria-pressed="false">Vegetáriánus</button>
+                        <button class="button button-outline-primary button-small filter-btn" data-filter="dessert" aria-pressed="false">Desszertek</button>
+                        <button class="button button-outline-primary button-small filter-btn" data-filter="drink" aria-pressed="false">Italok</button>
+                    </div>
+                    <a href="arany_kanal_etlap_premium.pdf" download="AranyKanal_Etlap.pdf" class="button button-secondary button-small" style="margin-top:20px;"><i class="fas fa-download"></i> Étlap letöltése (PDF)</a>
+                </div>
+                
+                <div id="menu-items-grid" aria-live="polite"> 
+                    
+                    <div class="menu-category animate-on-scroll" id="daily-special-menu-section" data-category="special">
+                        <h2 class="category-title text-gold"><i class="fas fa-star"></i> Mai Különlegességünk <i class="fas fa-star"></i></h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card daily-special-card" data-category="main special" data-allergens="tej,mustar" data-calories="650" id="daily-offer-card">
+                                <img src="https://img-global.cpcdn.com/recipes/eda5c4cade24b118/1200x630cq70/photo.jpg" alt="Rosé kacsamell" class="menu-item-image" id="daily-offer-menu-image">
+                                <div class="menu-item-details">
+                                    <h3 id="daily-offer-menu-title">Rosé kacsamell fügés lilakáposzta-pürével <span class="tag-special">SÉF AJÁNLATA</span></h3>
+                                    <p class="description" id="daily-offer-menu-description">Friss, szezonális alapanyagokból készült különlegesség, csak ma!</p>
+                                    <div class="chef-message-menu">
+                                        <h4><i class="fas fa-pen-fancy"></i> A Séf Üzenete Ma Reggel:</h4>
+                                        <blockquote id="chef-message-menu-text">"Ezt a fogást a tavasz első napsugarai ihlették. Könnyed, mégis karakteres ízekkel várom Önöket!" - Horváth Attila</blockquote>
+                                    </div>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">650</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Tej" aria-label="Tejet tartalmaz">🥛</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Mustár" aria-label="Mustárt tartalmaz">M</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">7 800 Ft</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="menu-category animate-on-scroll" id="starters-category" data-category="starter">
+                        <h2 class="category-title">Előételek</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card" data-category="starter" data-allergens="gluten,lactose,egg,mustard" data-calories="520">
+                                <img src="https://cdn.kifli.hu/cdn-cgi/image/f=auto,w=650/https://cdn.kifli.hu/uploads/H%C3%BAs%20%C3%A9s%20Hal/Bidfood/shutterstock_397945942.jpg" alt="Marha Tatár" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Marha Tatár "Arany Kanál"</h3>
+                                    <p class="description">Finomra vágott bélszín, kapri, mustár, tojássárgája, házi fűszervaj, frissen pirított bagett.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">520</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Tojás" aria-label="Tojást tartalmaz">T</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Mustár" aria-label="Mustárt tartalmaz">M</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">5 200 Ft</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="starter vegetarian" data-allergens="lactose,nuts,gluten" data-calories="480">
+                                <img src="https://diamondszalon.cdn.shoprenter.hu/custom/diamondszalon/image/cache/w570h570wt1/Term%C3%A9kek/sajttal.jpg.webp?lastmod=1668095986.1672830574" alt="Magyar Sajtvariációk" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Magyar Sajtvariációk <span class="vegetarian-tag">(V)</span></h3>
+                                    <p class="description">Válogatás kézműves magyar sajtokból, dió, házi fügelekvár, ropogós teljes kiőrlésű kenyér.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">480</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Diófélék" aria-label="Dióféléket tartalmaz">D</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">4 900 Ft</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="starter" data-allergens="gluten" data-calories="380">
+                                <img src="https://www.sandravalvassori.com/wp-content/uploads/2023/09/bruschetta-692.jpg" alt="Bruschetta Pomodoro" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Bruschetta Pomodoro</h3>
+                                    <p class="description">Friss paradicsom, bazsalikom, fokhagyma, olívaolaj ropogósra pirított kenyérszeleteken.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">380</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">3 200 Ft</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="menu-category animate-on-scroll" id="soups-category" data-category="soup">
+                        <h2 class="category-title">Levesek</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card" data-category="soup" data-allergens="gluten,lactose,celery" data-calories="450">
+                                <img src="https://i.ytimg.com/vi/H-T86n43CXA/maxresdefault.jpg" alt="Alföldi Gulyásleves" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Alföldi Gulyásleves</h3>
+                                    <p class="description">Gazdag marhagulyás leves, zöldségekkel, házi csipetkével, friss kenyérrel.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">450</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Zeller" aria-label="Zellert tartalmaz">Z</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">3 800 Ft</p>
+                               </div>
+                            </div>
+                            <div class="menu-item-card" data-category="soup vegetarian" data-allergens="lactose,gluten" data-calories="380">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjun3uqVQAEXcBplT6k2owvWlpms8WRDy6gwcBMhbRWHjoEWigJxWTUcKSLmLYUPbHN9duV8Em7K4Lbq9kbczZ3tK34ToJoU1_oXHXvR12xtgSJkOzo80y8rN8VhV1iTTxiomDcLKLequo/s1600/Gombaleves+h%25C3%25BAsgomb%25C3%25B3ccal+lev%25C3%25A9lz%25C3%25B6ldekkel.jpg" alt="Erdei gombakrémleves" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Erdei Gombakrémleves <span class="vegetarian-tag">(V)</span></h3>
+                                    <p class="description">Selymes krémleves válogatott erdei gombákból, pirított kenyérkockákkal és egy csepp tejszínnel.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">380</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">3 500 Ft</p>
+                               </div>
+                            </div>
+                             <div class="menu-item-card" data-category="soup" data-allergens="fish,gluten,lactose" data-calories="420">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2yxarj20gwmj_2LuQ6tIcrhrtm8jwHJUX4npDqk6UvEsoMk7zEj_U6_AKM7yYF8eoCkvuHv4QB6tx2WRRVkePIWP9i1enJItjvvdQMeb1Mk7KPyQ0zMj-lc2pXH3ujgfqE5s2qXtdBbc/s1600/DSCN3412.JPG" alt="Bajai Halászlé" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Bajai Halászlé Gyufatésztával</h3>
+                                    <p class="description">Tradicionális magyar halászlé pontyból, harcsából, bőségesen paprikázva, gyufatésztával tálalva.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">420</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Hal" aria-label="Halat tartalmaz">H</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">4 200 Ft</p>
+                               </div>
+                            </div>
+                            <div class="menu-item-card" data-category="soup vegetarian" data-allergens="lactose,gluten" data-calories="320">
+                                <img src="https://lh3.googleusercontent.com/proxy/HdePb2F8v2YoFhmgz71JwCwjtMLguS6Mz4eM_r-Hr3pfzxfUfnaohYbfJ2bdkGnQvJp5zadoikInH9DYiMrZqqgvGpRtUJMgAQ1I8LASxhqnh5TaZmBze7JJrzjhoZDJOBbOHw" alt="Sütőtökkrémleves" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Sütőtökkrémleves Pirított Tökmaggal <span class="vegetarian-tag">(V)</span></h3>
+                                    <p class="description">Bársonyos sütőtökkrémleves gyömbérrel és szerecsendióval ízesítve, pirított tökmaggal megszórva.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">320</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz (kenyérkocka)">G</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">3 300 Ft</p>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="menu-category animate-on-scroll" id="main-courses-category" data-category="main">
+                        <h2 class="category-title">Főételek</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card" data-category="main" data-allergens="lactose,gluten,egg" data-calories="780">
+                                <img src="https://vadkonyha.hu/wp-content/uploads/vadasszarvascomb.jpg" alt="Szarvasgerinc Vadasan" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Szarvasgerinc Vadasan</h3>
+                                    <p class="description">Omlós szarvasgerinc, klasszikus vadas mártással, zsemlegombóccal és áfonyalekvárral.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">780</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Tojás" aria-label="Tojást tartalmaz">T</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">9 800 Ft</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="main fish" data-allergens="fish,lactose" data-calories="650">
+                                <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=450&h=330&q=80" alt="Atlanti Tőkehal" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Atlanti Tőkehalfilé Chorizoval</h3>
+                                    <p class="description">Bőrén sült tőkehal, sült paprika krém, chorizo morzsa, fekete olívabogyó, friss zöldfűszerekkel.</p>
+                                     <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">650</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Hal" aria-label="Halat tartalmaz">H</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">9 200 Ft</p>
+                                </div>
+                            </div>
+                             <div class="menu-item-card" data-category="main vegetarian gluten-free" data-allergens="lactose" data-calories="550">
+                                <img src="https://kep.index.hu/1/0/3417/34171/341714/34171439_cea9aba855bebf0062cc415861a38a1b_wm.jpg" alt="Rakott Padlizsán Parmezánnal" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Rakott Padlizsán Parmezánnal <span class="vegetarian-tag">(V)</span> <span class="glutenfree-tag">(GF)</span></h3>
+                                    <p class="description">Rétegzett sült padlizsán, házi paradicsomszósz, friss mozzarella, bazsalikom, parmezánforgácsokkal.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">550</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">6 800 Ft</p>
+                                </div>
+                            </div>
+                            
+                            <div class="menu-item-card" data-category="main" data-allergens="gluten,lactose" data-calories="820">
+                                <img src="https://magyarkonyhaonline.hu/storage/media/images/2020/06/12/Marhapofa-vorosboros-martassal--burgonyafankkal.jpg" (pl. marhapofa)" alt="Marhapofa Vörösborban" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Marhapofa Vörösborban Párolva</h3>
+                                    <p class="description">Omlósra párolt marhapofa gazdag vörösboros mártásban, burgonyapürével és gyöngyhagymával.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">820</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén (mártás)" aria-label="Glutént tartalmaz">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz (püré)" aria-label="Laktózt tartalmaz">L</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">8 900 Ft</p>
+                                </div>
+                            </div>
+                             <div class="menu-item-card" data-category="main" data-allergens="gluten,egg,mustard" data-calories="750">
+                                <img src="https://i.ytimg.com/vi/dVuH4Ciu3Ho/maxresdefault.jpg" (pl. rántott szelet)" alt="Óriás Bécsi Szelet" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Óriás Bécsi Szelet Borjúból</h3>
+                                    <p class="description">Aranybarnára sütött, hatalmas borjú bécsi szelet, petrezselymes burgonyával és citrommal.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">750</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Tojás" aria-label="Tojást tartalmaz">T</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Mustár (panírban)" aria-label="Mustárt tartalmazhat">M</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">7 200 Ft</p>
+                                </div>
+                            </div>
+                             <div class="menu-item-card" data-category="main vegetarian" data-allergens="lactose,gluten,nuts" data-calories="600">
+                                <img src="https://lacikonyha.hu/assets/uploads/2019/06/Grill-camembert-afonyaval.jpg" (pl. grillezett camembert)" alt="Grillezett Camembert Dióval" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Grillezett Camembert Áfonyával és Dióval <span class="vegetarian-tag">(V)</span></h3>
+                                    <p class="description">Lágyan olvadt grillezett camembert sajt, házi áfonyalekvárral, pirított dióval és friss salátaággyal.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">600</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén (kenyér)" aria-label="Glutént tartalmazhat">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Diófélék" aria-label="Dióféléket tartalmaz">D</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">6 500 Ft</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="main" data-allergens="gluten,lactose,soya" data-calories="790">
+                                <img src="https://kep.index.hu/1/0/1748/17482/174827/17482772_ada23678d5417f63d6df855ed2263b1b_wm.jpg" (pl. BBQ oldalas)" alt="BBQ Oldalas" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>BBQ Oldalas Sült Burgonyával</h3>
+                                    <p class="description">Lassan sült, omlós sertésoldalas házi BBQ szósszal, fűszeres steakburgonyával és coleslaw salátával.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">950</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén (szósz)" aria-label="Glutént tartalmaz">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz (coleslaw)" aria-label="Laktózt tartalmaz">L</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Szója (szósz)" aria-label="Szóját tartalmaz">S</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">8 200 Ft</p>
+                                </div>
+                            </div>
+                             <div class="menu-item-card" data-category="main fish" data-allergens="fish,gluten" data-calories="580">
+                                <img src="https://www.buvosszakacs.com/wp-content/uploads/2018/12/fogas-karpathy-IMG_3552.jpg" (pl. fogas)" alt="Fogasfilé Kárpáthy Módon" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Fogasfilé Kárpáthy Módon</h3>
+                                    <p class="description">Ropogós bundában sült fogasfilé, tejszínes gombamártással, kapros-juhtúrós galuskával.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">720</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Hal" aria-label="Halat tartalmaz">H</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">9 500 Ft</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="main" data-allergens="lactose" data-calories="700">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgN6AXlv6Nk3KubSLn6H77pidJ2lkXoUZe5A&s" alt="Töltött Káposzta" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Töltött Káposzta Ahogy Mi Szeretjük</h3>
+                                    <p class="description">Hagyományos töltött káposzta füstölt csülökkel, gazdagon tejfölözve, friss kenyérrel.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">880</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz (tejföl)" aria-label="Laktózt tartalmaz">L</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">6 900 Ft</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-category animate-on-scroll" id="vegetarian-category" data-category="vegetarian">
+                        <h2 class="category-title">Vegetáriánus Kínálatunk</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card" data-category="vegetarian main" data-allergens="gluten,lactose,egg" data-calories="580">
+                                <img src="https://i0.wp.com/flamingoskitchen.hu/wp-content/uploads/2021/01/Ra%CC%81ntott-sajt-scaled.jpg?fit=2560%2C1707&ssl=1" (pl. rántott sajt)" alt="Rántott Trappista Sajt" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Rántott Trappista Sajt Tartármártással <span class="vegetarian-tag">(V)</span></h3>
+                                    <p class="description">Aranybarnára sütött trappista sajt, házi tartármártással és jázminrizzsel vagy hasábburgonyával.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">720</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Tojás" aria-label="Tojást tartalmaz">T</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">5 800 Ft</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="vegetarian main" data-allergens="gluten,soya" data-calories="450">
+                                <img src="https://prove.hu/wp-content/uploads/2022/01/tofus-zoldseges-piritott-teszta-scaled.jpg" (pl. zöldséges tészta)" alt="Zöldséges Wok Tészta" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Zöldséges Wok Tészta Tofuval <span class="vegetarian-tag">(V)</span></h3>
+                                    <p class="description">Friss zöldségek, pirított tofu, szójaszószos-gyömbéres öntettel, tojásos tésztán.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">550</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Szója" aria-label="Szóját tartalmaz">S</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Tojás (tészta)" aria-label="Tojást tartalmazhat">T</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">6 200 Ft</p>
+                                </div>
+                            </div>
+                             <div class="menu-item-card" data-category="vegetarian main gluten-free" data-allergens="lactose,nuts" data-calories="510">
+                                <img src="https://magazin.mavcsoport.hu/sites/default/files/inline-images/20221108_000705.jpg" (pl. céklasaláta kecskesajttal)" alt="Sült Cékla Kecskesajttal" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Sült Cékla Grillezett Kecskesajttal és Dióval <span class="vegetarian-tag">(V)</span> <span class="glutenfree-tag">(GF)</span></h3>
+                                    <p class="description">Mézben sült cékla, grillezett kecskesajt korongok, pirított dió, balzsamecet-redukcióval.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">510</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Diófélék" aria-label="Dióféléket tartalmaz">D</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">6 700 Ft</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-category animate-on-scroll" id="desserts-category" data-category="dessert">
+                        <h2 class="category-title">Édes Befejezés</h2>
+                        <div class="menu-grid">
+                            <div class="menu-item-card" data-category="dessert" data-allergens="gluten,lactose,egg,nuts">
+                                <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=450&h=330&q=80" alt="Aranygaluska" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Aranygaluska Vaníliasodóval</h3>
+                                    <p class="description">Házi kelt tészta, diós töltelékkel, gazdag vaníliasodóval és baracklekvárral.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">600</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Tojás" aria-label="Tojást tartalmaz">T</span> 
+                                            <span class="allergen-icon" data-allergen-tooltip="Diófélék" aria-label="Dióféléket tartalmaz">D</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">3 900 Ft</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="dessert fruit vegetarian gluten-free" data-allergens="" data-calories="250">
+                                <img src="https://image-api.nosalty.hu/nosalty/images/recipes/f9/6X/mentas-gyumolcssalata.jpeg?w=2686&fit=crop&s=160ce73836eea94898733495d131cc26" alt="Gyümölcssaláta" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Szezonális Gyümölcssaláta Mentaszorbet-val <span class="vegetarian-tag">(V)</span> <span class="glutenfree-tag">(GF)</span></h3>
+                                    <p class="description">Friss idénygyümölcsök válogatása, házi készítésű frissítő mentaszorbettel.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">250</span> kcal</span>
+                                         <div class="allergen-icons">
+                                         </div>
+                                    </div>
+                                    <p class="price">3 100 Ft</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="dessert" data-allergens="gluten,lactose,egg" data-calories="550">
+                                <img src="https://streetkitchen.hu/wp-content/uploads/2021/04/somloi-galuska.jpg" (pl. somlói)" alt="Somlói Galuska" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Somlói Galuska "Arany Kanál" Módon</h3>
+                                    <p class="description">Klasszikus somlói piskóta, vaníliakrém, csokoládéöntet, dió, mazsola és tejszínhab.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">680</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Tojás" aria-label="Tojást tartalmaz">T</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Diófélék" aria-label="Dióféléket tartalmaz">D</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">3 700 Ft</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="dessert" data-allergens="gluten,lactose,egg" data-calories="480">
+                                <img src="https://cdn.mindmegette.hu/2024/04/JsEdclD82Vq-Z3r1xcwi-2qBtf0-VeRovlxD-29gsMI/fill/0/0/no/1/aHR0cHM6Ly9jbXNjZG4uYXBwLmNvbnRlbnQucHJpdmF0ZS9jb250ZW50L2VmYWQwMGQ3NzIyMDRkMWVhNDJkNTJjZWFmNWUxMDc5.webp" (pl. túrógombóc)" alt="Túrógombóc" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Házi Túrógombóc Édes Tejföllel</h3>
+                                    <p class="description">Lágy túrógombócok aranybarnára pirított zsemlemorzsában, porcukorral és édes tejföllel.</p>
+                                    <div class="item-meta">
+                                        <span class="calorie-info"><i class="fas fa-fire-alt"></i> Kb. <span class="calorie-value">520</span> kcal</span>
+                                        <div class="allergen-icons">
+                                            <span class="allergen-icon" data-allergen-tooltip="Glutén" aria-label="Glutént tartalmaz">G</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Laktóz" aria-label="Laktózt tartalmaz">L</span>
+                                            <span class="allergen-icon" data-allergen-tooltip="Tojás" aria-label="Tojást tartalmaz">T</span>
+                                        </div>
+                                    </div>
+                                    <p class="price">3 600 Ft</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-category animate-on-scroll" id="drinks-category" data-category="drink">
+                        <h2 class="category-title">Italok</h2>
+                        <p class="text-center subtitle" style="margin-bottom: 20px;">Fedezze fel széleskörű borlapunkat, kézműves söreinket, prémium röviditalainkat és frissítőinket. Kérje bátran munkatársunk segítségét a tökéletes választáshoz!</p>
+                        <div class="menu-grid">
+                             <div class="menu-item-card" data-category="drink">
+                                <img src="https://gyogyszernelkul.com/wp-content/uploads/2018/04/hazi-keszitesu-gyogynovenyes-limonades-receptek.jpg" (pl. limonádé)" alt="Házi Limonádék" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Házi Limonádék</h3>
+                                    <p class="description">Frissítő házi limonádék többféle ízben (citrusos, epres, bodzás, uborkás).</p>
+                                    <p class="price">1 500 Ft / 0.5l</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="drink">
+                                <img src="https://dunaujvaros.com/sites/all/files/styles/large/public/images/news/body/37183170711.jpg?itok=gxNnRcl4" (pl. kávé)" alt="Kávékülönlegességek" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Kávékülönlegességek</h3>
+                                    <p class="description">Espresso, cappuccino, latte, melange frissen őrölt szemes kávéból.</p>
+                                    <p class="price">900 Ft-tól</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-card" data-category="drink">
+                                <img src="https://monoripincefalu.eu/dynamic/2021/borokrol/grocz-borok.jpg" (pl. borok)" alt="Magyar Borok" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Magyar Kézműves Borok</h3>
+                                    <p class="description">Válogatás a legjobb hazai pincészetek fehér, rosé és vörösboraiból. Kérje ajánlatunkat!</p>
+                                    <p class="price">Pohár / Palack</p>
+                                </div>
+                            </div>
+                             <div class="menu-item-card" data-category="drink">
+                                <img src="https://elesztohaz.hu/wp-content/uploads/2021/04/DSC03377-1080x675.jpg" (pl. sörök)" alt="Kézműves Sörök" class="menu-item-image">
+                                <div class="menu-item-details">
+                                    <h3>Kézműves Sörök</h3>
+                                    <p class="description">Hazai és nemzetközi kézműves sörök széles választéka, csapolva és üvegesen.</p>
+                                    <p class="price">1 800 Ft-tól</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center" style="margin-top: 30px;">
+                            <a href="arany_kanal_itallap_premium.pdf" download="AranyKanal_Itallap.pdf" class="button button-secondary"><i class="fas fa-wine-glass-alt"></i> Részletes Itallap Letöltése (PDF)</a>
+                        </div>
+                    </div>
+                    <div id="no-results-message" class="text-center text-muted" style="display:none; padding: 20px; font-size: 1.1em;">
+                        Sajnos a jelenlegi szűrési feltételeknek egyetlen étel sem felel meg. Próbálja megváltoztatni a szűrőket!
+                    </div>
+                </div> 
+
+            </div>
+        </section>
+
+        <section id="booking-cta" class="section-padding bg-dark">
+            <div class="container text-center animate-on-scroll">
+                <h2 class="section-title text-light">Élvezze a Különleges Ízeket!</h2>
+                <p class="subtitle text-light" style="color: #e0e0e0;">Foglalja le asztalát még ma, és kóstolja meg az Arany Kanál prémium kínálatát.</p>
+                <a href="booking.html" class="button button-gold button-large"><i class="fas fa-calendar-check"></i> Asztalfoglalás Most</a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column about-column">
+                    <h4>Az Arany Kanál Étteremről</h4>
+                    <p>Prémium ízek, felejthetetlen pillanatok Budapest szívében.</p>
+                    <div class="social-icons-footer">
+                        <a href="#" aria-label="Facebook oldalunk (új ablakban nyílik)" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram profilunk (új ablakban nyílik)" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TripAdvisor értékeléseink (új ablakban nyílik)" target="_blank" rel="noopener"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column links-column">
+                    <h4>Hasznos Oldalak</h4>
+                    <ul>
+                        <li><a href="index.html">Főoldal</a></li>
+                        <li><a href="index.html#about-section">Rólunk</a></li>
+                        <li><a href="menu.html">Étlap</a></li>
+                        <li><a href="index.html#daily-offer-section">Napi Ajánlat</a></li>
+                        <li><a href="contact.html">Kapcsolat</a></li>
+                        <li><a href="booking.html">Asztalfoglalás</a></li>
+                        <li><a href="events.html">Rendezvények</a></li>
+                        <li><a href="index.html#loyalty-program-intro">Hűségprogram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column contact-column">
+                    <h4>Elérhetőségek</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 1051 Budapest, Zrínyi utca 5.</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+3612345678">+36 1 234 5678</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:foglalas@aranykanaletterem.hu">foglalas@aranykanaletterem.hu</a></p>
+                </div>
+                <div class="footer-column newsletter-column">
+                    <h4>Maradjon Képben!</h4>
+                     <form id="newsletterFormFooter">
+                        <input type="email" id="newsletterEmailFooter" name="email" placeholder="E-mail címe" required>
+                        <button type="submit" class="button button-gold button-small">Feliratkozás</button>
+                    </form>
+                    <small id="newsletterStatusFooter" aria-live="polite"></small>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Arany Kanál Étterem. Minden jog fenntartva.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script_menu.js"></script> 
+</body>
+</html>

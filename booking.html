@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arany Kanál Étterem - Online Asztalfoglalás</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style_index.css">
+    <link rel="stylesheet" href="style_booking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <a href="index.html" id="logo" class="logo">
+                Arany Kanál <span class="logo-accent">Étterem</span>
+            </a>
+            <nav id="main-nav">
+                <button id="mobile-menu-toggle" aria-label="Menü megjelenítése/elrejtése" aria-expanded="false" aria-controls="main-nav-ul">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="main-nav-ul">
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="menu.html">Étlap</a></li>
+                    <li><a href="index.html#daily-offer-section">Napi Ajánlat</a></li>
+                    <li><a href="contact.html">Kapcsolat</a></li>
+                    <li><a href="booking.html" class="active nav-booking-button button-primary">Asztalfoglalás</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div id="real-time-wait-booking" class="real-time-wait-display">
+                    <i class="fas fa-clock"></i> Várható várakozás: <span id="wait-time-value-booking">betöltés...</span>
+                </div>
+                 <button id="theme-toggle-button" aria-label="Sötét/Világos mód váltása"><i class="fas fa-moon"></i></button>
+                 <div class="language-switcher">
+                     <button class="current-lang" aria-haspopup="true" aria-expanded="false">HU <i class="fas fa-caret-down"></i></button>
+                     <div class="lang-dropdown" role="menu">
+                         <a href="#" data-lang="hu" role="menuitem">Magyar</a>
+                         <a href="#" data-lang="en" role="menuitem">English</a>
+                     </div>
+                 </div>
+             </div>
+        </div>
+    </header>
+
+    <section id="page-hero-section" class="booking-hero">
+        <div class="hero-background-image" style="background-image: url('https://insidewordnyelviskola.hu/wp-content/uploads/etterem.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="page-hero-title">Biztosítsa Helyét <span class="text-gold">Nálunk</span>!</h1>
+            <p class="page-hero-subtitle">Foglaljon asztalt egyszerűen online, válassza ki kedvenc helyét interaktív térképünkön, és élvezze az Arany Kanál Étterem különleges hangulatát!</p>
+        </div>
+    </section>
+
+    <main id="booking-page-content" class="section-padding">
+        <div class="container">
+
+            <section id="interactive-map-booking" class="animate-on-scroll" aria-labelledby="interactiveMapTitle">
+                <h2 id="interactiveMapTitle" class="form-section-title">Válasszon Asztalt Térképről (Opcionális)</h2>
+                <p class="text-center text-muted" style="font-size:0.9em; margin-bottom: 25px;">Kattintson az Önnek tetsző szabad asztalra az alaprajzon, vagy használja a lenti hagyományos űrlapot.</p>
+                <div id="restaurant-floor-plan" style="text-align:center; margin-bottom:20px; background-color: #fff; padding: 20px; border: 1px solid #eee; border-radius: var(--border-radius-main); box-shadow: var(--box-shadow-light);">
+                    <svg width="100%" id="floorPlanSvg" viewBox="0 0 800 600" role="img" aria-labelledby="floorplanDesc">
+                         <defs>
+                            <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8">
+                                <path d="M-2,2 l4,-4 M0,8 l8,-8 M6,10 l4,-4" style="stroke:#CFD8DC; stroke-width:1"/>
+                            </pattern>
+                        </defs>
+                        <desc id="floorplanDesc">Az étterem alaprajza, ahol kiválaszthatja az Önnek tetsző asztalt. Kattintson egy szabad asztalra a kiválasztáshoz. A sraffozott asztalok foglaltak.</desc>
+                        <rect class="floor-bg" x="5" y="5" width="790" height="590" />
+                        <text class="static-label" x="400" y="30">Bejárat</text>
+                        <line x1="350" y1="5" x2="350" y2="55" stroke="#a0a0a0" stroke-width="3"/>
+                        <line x1="450" y1="5" x2="450" y2="55" stroke="#a0a0a0" stroke-width="3"/>
+
+                        <text class="static-label small-label" x="70" y="80" transform="rotate(-90, 70, 80)">Ablak</text>
+                        <g class="table-group" id="table-A1" data-table-id="A1" data-table-name="A1 (Ablaknál, 2fő)" data-capacity="2" tabindex="0" role="button" aria-label="Asztal A1, ablaknál, 2 személyes">
+                            <rect class="table-shape" x="50" y="100" width="70" height="40" rx="5" ry="5" />
+                            <text class="table-label" x="85" y="120">A1</text>
+                        </g>
+                         <g class="table-group table-unavailable" id="table-A2" data-table-id="A2" data-table-name="A2 (Ablaknál, 2fő, Foglalt)" data-capacity="2" tabindex="0" role="button" aria-label="Asztal A2, ablaknál, 2 személyes, foglalt">
+                            <rect class="table-shape" x="50" y="160" width="70" height="40" rx="5" ry="5" />
+                            <text class="table-label" x="85" y="180">A2</text>
+                        </g>
+                         <g class="table-group" id="table-A3" data-table-id="A3" data-table-name="A3 (Ablaknál, 4fő)" data-capacity="4" tabindex="0" role="button" aria-label="Asztal A3, ablaknál, 4 személyes">
+                            <rect class="table-shape" x="50" y="220" width="90" height="50" rx="5" ry="5" />
+                            <text class="table-label" x="95" y="245">A3</text>
+                        </g>
+                         <g class="table-group table-unavailable" id="table-A4" data-table-id="A4" data-table-name="A4 (Ablaknál, 4fő, Foglalt)" data-capacity="4" tabindex="0" role="button" aria-label="Asztal A4, ablaknál, 4 személyes, foglalt">
+                            <rect class="table-shape" x="50" y="290" width="90" height="50" rx="5" ry="5" />
+                            <text class="table-label" x="95" y="315">A4</text>
+                        </g>
+
+                         <g class="table-group" id="table-B1" data-table-id="B1" data-table-name="B1 (Középen, 4fő)" data-capacity="4" tabindex="0" role="button" aria-label="Asztal B1, középen, 4 személyes">
+                            <rect class="table-shape" x="200" y="150" width="90" height="50" rx="5" ry="5" />
+                            <text class="table-label" x="245" y="175">B1</text>
+                        </g>
+                         <g class="table-group table-unavailable" id="table-B2" data-table-id="B2" data-table-name="B2 (Középen, 4fő, Foglalt)" data-capacity="4" tabindex="0" role="button" aria-label="Asztal B2, középen, 4 személyes, foglalt">
+                            <rect class="table-shape" x="310" y="150" width="90" height="50" rx="5" ry="5" />
+                            <text class="table-label" x="355" y="175">B2</text>
+                        </g>
+                        <g class="table-group" id="table-B3" data-table-id="B3" data-table-name="B3 (Középen, 6fő)" data-capacity="6" tabindex="0" role="button" aria-label="Asztal B3, középen, 6 személyes">
+                             <rect class="table-shape" x="420" y="150" width="120" height="60" rx="5" ry="5" />
+                             <text class="table-label" x="480" y="180">B3</text>
+                         </g>
+                         <g class="table-group table-unavailable" id="table-B4" data-table-id="B4" data-table-name="B4 (Középen, 2fő, Foglalt)" data-capacity="2" tabindex="0" role="button" aria-label="Asztal B4, középen, 2 személyes, foglalt">
+                            <rect class="table-shape" x="200" y="250" width="70" height="40" rx="5" ry="5" />
+                            <text class="table-label" x="235" y="270">B4</text>
+                        </g>
+                         <g class="table-group" id="table-B5" data-table-id="B5" data-table-name="B5 (Középen, 2fő)" data-capacity="2" tabindex="0" role="button" aria-label="Asztal B5, középen, 2 személyes">
+                            <rect class="table-shape" x="290" y="250" width="70" height="40" rx="5" ry="5" />
+                            <text class="table-label" x="325" y="270">B5</text>
+                        </g>
+
+                        <rect class="static-element" x="650" y="70" width="100" height="200" fill="#e0e0e0" stroke="#c0c0c0" rx="8" ry="8" />
+                        <text class="static-label" x="700" y="170" transform="rotate(-90, 700, 170)">BÁRPULT</text>
+                        <g class="table-group table-unavailable" id="table-P1" data-table-id="P1" data-table-name="P1 (Pultnál, 2fő, Foglalt)" data-capacity="2" tabindex="0" role="button" aria-label="Asztal P1, pultnál, 2 személyes, foglalt">
+                            <circle class="table-shape" cx="600" cy="100" r="25" />
+                            <text class="table-label" x="600" y="100">P1</text>
+                        </g>
+                        <g class="table-group" id="table-P2" data-table-id="P2" data-table-name="P2 (Pultnál, 2fő)" data-capacity="2" tabindex="0" role="button" aria-label="Asztal P2, pultnál, 2 személyes">
+                             <circle class="table-shape" cx="600" cy="170" r="25" />
+                            <text class="table-label" x="600" y="170">P2</text>
+                        </g>
+                         <g class="table-group table-unavailable" id="table-P3" data-table-id="P3" data-table-name="P3 (Pultnál, 2fő, Foglalt)" data-capacity="2" tabindex="0" role="button" aria-label="Asztal P3, pultnál, 2 személyes, foglalt">
+                             <circle class="table-shape" cx="600" cy="240" r="25" />
+                             <text class="table-label" x="600" y="240">P3</text>
+                         </g>
+
+                        <rect class="static-element" x="200" y="480" width="300" height="70" fill="#f0f8ff" stroke="#d6eaff" rx="5" ry="5"/>
+                        <text class="static-label small-label" x="350" y="515">Különterem bejárat</text>
+
+                        <g class="table-group table-unavailable" id="table-C1" data-table-id="C1" data-table-name="C1 (Hátul, 6fő, Foglalt)" data-capacity="6" tabindex="0" role="button" aria-label="Asztal C1, hátul, 6 személyes, foglalt">
+                            <rect class="table-shape" x="50" y="450" width="120" height="60" rx="5" ry="5" />
+                            <text class="table-label" x="110" y="480">C1</text>
+                        </g>
+                        <g class="table-group" id="table-C2" data-table-id="C2" data-table-name="C2 (Hátul, 4fő)" data-capacity="4" tabindex="0" role="button" aria-label="Asztal C2, hátul, 4 személyes">
+                            <rect class="table-shape" x="200" y="380" width="90" height="50" rx="5" ry="5" />
+                            <text class="table-label" x="245" y="405">C2</text>
+                        </g>
+                        <g class="table-group table-unavailable" id="table-C3" data-table-id="C3" data-table-name="C3 (Hátul, 4fő, Foglalt)" data-capacity="4" tabindex="0" role="button" aria-label="Asztal C3, hátul, 4 személyes, foglalt">
+                            <rect class="table-shape" x="310" y="380" width="90" height="50" rx="5" ry="5" />
+                            <text class="table-label" x="355" y="405">C3</text>
+                        </g>
+                         <g class="table-group" id="table-C4" data-table-id="C4" data-table-name="C4 (Hátul, Kerek, 5fő)" data-capacity="5" tabindex="0" role="button" aria-label="Asztal C4, hátul, kerek, 5 személyes">
+                            <circle class="table-shape" cx="480" cy="410" r="35" />
+                            <text class="table-label" x="480" y="410">C4</text>
+                        </g>
+                         <g class="table-group" id="table-C5" data-table-id="C5" data-table-name="C5 (Sarok, 2fő)" data-capacity="2" tabindex="0" role="button" aria-label="Asztal C5, sarok, 2 személyes">
+                             <rect class="table-shape" x="680" y="480" width="70" height="40" rx="5" ry="5" />
+                             <text class="table-label" x="715" y="500">C5</text>
+                         </g>
+                         <g class="table-group table-unavailable" id="table-C6" data-table-id="C6" data-table-name="C6 (Sarok, 2fő, Foglalt)" data-capacity="2" tabindex="0" role="button" aria-label="Asztal C6, sarok, 2 személyes, foglalt">
+                             <rect class="table-shape" x="580" y="480" width="70" height="40" rx="5" ry="5" />
+                             <text class="table-label" x="615" y="500">C6</text>
+                         </g>
+
+                    </svg>
+                     </div>
+                <div id="selected-table-info" class="text-center" style="font-weight: bold; color: var(--ak-primary-blue); min-height: 1.5em; margin-top:10px; margin-bottom: 30px;">
+                    Kérjük, válasszon asztalt a térképről, vagy használja az űrlapot.
+                </div>
+                 <input type="hidden" id="selectedTableIdInput" name="selectedTableIdInput">
+            </section>
+
+            <div class="booking-form-wrapper" data-animate="fadeInUp">
+                <h2 class="form-section-title">Asztalfoglalási Adatok</h2>
+                <form id="onlineBookingForm" novalidate>
+                    <fieldset>
+                        <legend class="visually-hidden">Személyes adatok</legend>
+                        <div class="form-grid-2-col">
+                            <div class="form-group">
+                                <label for="bookingName">Teljes Név <span class="required-star">*</span></label>
+                                <input type="text" id="bookingName" name="bookingName" required placeholder="Pl. Nagy István" aria-describedby="nameError">
+                                <small class="error-message" id="nameError"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingEmail">E-mail Cím <span class="required-star">*</span></label>
+                                <input type="email" id="bookingEmail" name="bookingEmail" required placeholder="Pl. email@domain.hu" aria-describedby="emailError">
+                                <small class="error-message" id="emailError"></small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookingPhone">Telefonszám</label>
+                            <input type="tel" id="bookingPhone" name="bookingPhone" placeholder="Pl. +36 20 123 4567 (Opcionális)" aria-describedby="phoneError">
+                            <small class="error-message" id="phoneError"></small>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend class="visually-hidden">Foglalás részletei</legend>
+                        <div class="form-grid-3-col">
+                            <div class="form-group">
+                                <label for="bookingDate">Dátum <span class="required-star">*</span></label>
+                                <input type="date" id="bookingDate" name="bookingDate" required aria-describedby="dateError">
+                                <small class="error-message" id="dateError"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingTime">Időpont <span class="required-star">*</span></label>
+                                <input type="time" id="bookingTime" name="bookingTime" min="12:00" max="22:00" step="900" required aria-describedby="timeError">
+                                <small class="error-message" id="timeError"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingGuests">Személyek száma <span class="required-star">*</span></label>
+                                <input type="number" id="bookingGuests" name="bookingGuests" min="1" max="10" value="2" required aria-describedby="guestsError">
+                                <small class="error-message" id="guestsError">(Max. 10 fő online. Nagyobb csoport esetén hívjon minket!)</small>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend class="visually-hidden">Egyéb kérések</legend>
+                        <div class="form-group">
+                            <label for="bookingNotes">Megjegyzések, Kérések (opcionális)</label>
+                            <textarea id="bookingNotes" name="bookingNotes" rows="4" placeholder="Pl. ételallergia, ablak melletti asztal, gyermekszék, stb."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-group form-submit-group">
+                        <button type="submit" class="button button-gold button-large form-submit-button">
+                            <i class="fas fa-calendar-check"></i> Foglalás Véglegesítése
+                        </button>
+                    </div>
+                </form>
+                <div id="bookingFormStatus" class="form-status-message" aria-live="polite"></div>
+
+                <div class="booking-policy-info">
+                    <p><i class="fas fa-info-circle"></i> Foglalását e-mailben igazoljuk vissza. Kérjük, ellenőrizze postafiókját (a Spam/Levélszemét mappát is).</p>
+                    <p><i class="fas fa-users"></i> 10 fő feletti csoportok foglalásához, vagy különleges kérések esetén kérjük, vegye fel velünk a kapcsolatot telefonon: <a href="tel:+3612345678" class="text-gold">+36 1 234 5678</a>.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column about-column">
+                    <h4>Az Arany Kanál Étteremről</h4>
+                    <p>Modern magyaros konyha Budapest szívében. Minőségi alapanyagok, egyedi ízek, elegáns környezet. Várjuk szeretettel!</p>
+                    <div class="social-icons-footer">
+                        <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TripAdvisor" target="_blank" rel="noopener"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column links-column">
+                    <h4>Hasznos Oldalak</h4>
+                    <ul>
+                        <li><a href="index.html">Főoldal</a></li>
+                        <li><a href="menu.html">Étlapunk</a></li>
+                        <li><a href="booking.html">Asztalfoglalás</a></li>
+                        <li><a href="contact.html">Kapcsolatfelvétel</a></li>
+                        <li><a href="index.html#loyalty-program-intro">Hűségprogram</a></li>
+                        <li><a href="#">Adatvédelmi Nyilatkozat</a></li>
+                        <li><a href="#">ÁSZF</a></li>
+                        <li><a href="events.html">Rendezvények</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column contact-column">
+                    <h4>Elérhetőségeink</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 1051 Budapest, Zrínyi utca 5.</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+3612345678">+36 1 234 5678</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:foglalas@aranykanaletterem.hu">foglalas@aranykanaletterem.hu</a></p>
+                    <h4>Nyitvatartás</h4>
+                    <p>H-Szo: 12:00 - 23:00<br>Vas: 12:00 - 22:00</p>
+                </div>
+                <div class="footer-column newsletter-column">
+                    <h4>Maradjon Képben!</h4>
+                    <p>Iratkozzon fel hírlevelünkre a legfrissebb ajánlatokért és eseményeinkért!</p>
+                    <form id="newsletterFormFooter">
+                        <input type="email" id="newsletterEmailFooter" name="newsletterEmail" placeholder="E-mail címe" required>
+                        <button type="submit" class="button button-gold button-small">Feliratkozom</button>
+                    </form>
+                    <small id="newsletterStatusFooter" aria-live="polite"></small>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Arany Kanál Étterem. Minden jog fenntartva.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script_booking.js"></script>
+</body>
+</html>
